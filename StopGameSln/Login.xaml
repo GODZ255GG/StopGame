@@ -1,0 +1,86 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StopGame"
+        xmlns:Properties="clr-namespace:StopGame.Properties" x:Class="StopGame.Login"
+        mc:Ignorable="d"
+        Title="Login" Height="515" Width="815">
+    <Window.Resources>
+        <Style x:Key="RoundedTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="10">
+                            <ScrollViewer x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="RoundedPasswordBoxStyle" TargetType="PasswordBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="10">
+                            <ScrollViewer x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="LightGray" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" Background="{TemplateBinding Background}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="{TemplateBinding BorderThickness}" 
+                        CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="DarkGray" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="Silver" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FF2F6D75" Margin="0,0,0,-6">
+
+        <Label x:Name="lbTitle" Content= "{x:Static Properties:Resources.lbTitle}" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontFamily="Cooper Black" FontSize="100" Foreground="#FFADEEF7" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Ellipse HorizontalAlignment="Left" Height="74" Margin="701,19,0,0" Stroke="White" VerticalAlignment="Top" Width="74" Fill="#FF4EB4C2" StrokeThickness="4"/>
+        <Ellipse HorizontalAlignment="Left" Height="74" Margin="10,383,0,0" Stroke="White" VerticalAlignment="Top" Width="74" Fill="#FF4EB4C2" StrokeThickness="4"/>
+        <Image x:Name="imgConfiguration" Source="C:\Users\reneu\Videos\Proyect\Resources\cogwheel 1.png" HorizontalAlignment="Left" Height="52" Margin="712,30,0,0" VerticalAlignment="Top" Width="56"/>
+        <Image x:Name="imgHelp" Source="C:\Users\reneu\Videos\Proyect\Resources\problem 2.png" HorizontalAlignment="Left" Height="52" Margin="21,394,0,0" VerticalAlignment="Top" Width="56"/>
+        <Label x:Name="lmEmail" Content="{x:Static Properties:Resources.lbEmail}" HorizontalAlignment="Left" Margin="128,155,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="20" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="266" Height="32"/>
+        <Label x:Name="lbPassword" Content="{x:Static Properties:Resources.lbPassword}" HorizontalAlignment="Left" Margin="226,244,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="20" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="168"/>
+        <Label x:Name="lbConfiguration" Content="{x:Static Properties:Resources.lbConfiguration}" HorizontalAlignment="Left" Margin="686,93,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="10" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Label x:Name="lbHelp" Content="{x:Static Properties:Resources.lbHelp}" HorizontalAlignment="Left" Margin="22,462,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="10" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="tbEmail" Style="{StaticResource RoundedTextBoxStyle}" HorizontalAlignment="Left" Margin="430,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="282" FontSize="20" FontFamily="Cooper Black" Foreground="White" Background="#FF62E4F5" BorderBrush="White" Padding="5,5,5,5" BorderThickness="4,4,4,4" Height="41"/>
+        <PasswordBox x:Name="pbPassword" Style="{StaticResource RoundedPasswordBoxStyle}" HorizontalAlignment="Left" Margin="430,240,0,0" VerticalAlignment="Top" Width="282" Height="41" Background="#FF62E4F5" BorderBrush="White" Padding="5,5,5,5" BorderThickness="4,4,4,4" Foreground="#FFFDFDFD" FontSize="20" FontFamily="Cooper Black" PasswordChar="*"/>
+        <Button x:Name="btnLogin" Content="{x:Static Properties:Resources.btnLogin}" HorizontalAlignment="Center" Margin="0,333,0,0" VerticalAlignment="Top" Height="44" Width="195" FontSize="20" FontFamily="Cooper Black" Foreground="White" Background="#FF62E4F5" BorderThickness="4,4,4,4" BorderBrush="White"/>
+        <Image x:Name="imgReturn" Source="C:\Users\reneu\Videos\Proyect\Resources\left-arrow.png" HorizontalAlignment="Left" Height="74" Margin="21,19,0,0" VerticalAlignment="Top" Width="74" MouseLeftButtonDown="imgReturn_MouseLeftButtonDown"/>
+        <Label x:Name="lbPasswordError" Content="" HorizontalAlignment="Left" Margin="430,282,0,0" VerticalAlignment="Top" Width="282" FontFamily="Cooper Black" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="Red"/>
+        <Label x:Name="lbEmailEmail" Content="" HorizontalAlignment="Left" Margin="430,192,0,0" VerticalAlignment="Top" Width="282" FontFamily="Cooper Black" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="Red"/>
+
+    </Grid>
+</Window>

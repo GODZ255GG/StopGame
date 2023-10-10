@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StopGameModelStoreContainer" CdmEntityContainer="StopGameEntities">
+    <EntitySetMapping Name="Player">
+      <EntityTypeMapping TypeName="StopGameModel.Player">
+        <MappingFragment StoreEntitySet="Player">
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="propilePicture" ColumnName="propilePicture" />
+          <ScalarProperty Name="coins" ColumnName="coins" />
+          <ScalarProperty Name="playingTime" ColumnName="playingTime" />
+          <ScalarProperty Name="idPlayer" ColumnName="idPlayer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="StopGameModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
