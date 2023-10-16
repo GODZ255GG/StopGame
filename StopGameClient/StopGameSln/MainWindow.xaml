@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:StopGame"
         xmlns:p = "clr-namespace:StopGame.Properties"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.windowTile}" Height="517" Width="811">
+        Title="{x:Static p:Resources.windowTile}" Height="546" Width="811"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="RoundedTextBoxStyle" TargetType="TextBox">
             <Setter Property="Template">

@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:StopGame"
         xmlns:Properties="clr-namespace:StopGame.Properties" x:Class="StopGame.PlayAsGuest"
         mc:Ignorable="d"
-        Title="PlayAsGuest" Height="526" Width="809">
+        Title="PlayAsGuest" Height="526" Width="809"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="RoundedTextBoxStyle" TargetType="{x:Type TextBox}">
             <Setter Property="Template">
@@ -74,7 +75,7 @@
         <Label x:Name="lbHelp" Content="{x:Static Properties:Resources.lbHelp}" HorizontalAlignment="Left" Margin="22,462,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="10" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
         <TextBox x:Name="tbUserName" Style="{StaticResource RoundedTextBoxStyle}" HorizontalAlignment="Left" Margin="421,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="282" FontSize="20" FontFamily="Cooper Black" Foreground="White" Background="#FF62E4F5" BorderBrush="White" Padding="5,5,5,5" BorderThickness="4,4,4,4" Height="41"/>
         <Button x:Name="btnPublicGames" Content="{x:Static Properties:Resources.btnPublicGames}" HorizontalAlignment="Left" Margin="249,298,0,0" VerticalAlignment="Top" Height="43" Width="314" FontSize="20" FontFamily="Cooper Black" Foreground="White" Background="#FF62E4F5" BorderThickness="4,4,4,4" BorderBrush="White" />
-        <Image x:Name="imgConfiguration" Source="\images\cogwheel 1.png" HorizontalAlignment="Left" Height="52" Margin="712,30,0,0" VerticalAlignment="Top" Width="56"/>
+        <Image x:Name="imgConfiguration" Source="\images\cogwheel 1.png" HorizontalAlignment="Left" Height="52" Margin="712,30,0,0" VerticalAlignment="Top" Width="56" MouseLeftButtonDown="imgConfiguration_MouseLeftButtonDown"/>
         <Image x:Name="imgHelp" Source="\images\problem 2.png" HorizontalAlignment="Left" Height="52" Margin="21,394,0,0" VerticalAlignment="Top" Width="56"/>
         <Image x:Name="imgReturn" Source="\images\left-arrow.png" HorizontalAlignment="Left" Height="74" Margin="22,19,0,0" VerticalAlignment="Top" Width="74" MouseLeftButtonDown="imgReturn_MouseLeftButtonDown"/>
 

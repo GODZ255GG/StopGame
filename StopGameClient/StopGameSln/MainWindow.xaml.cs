@@ -21,11 +21,10 @@ namespace StopGame
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             RegisterAction();
+            MessageBox.Show("Usuario registrado correctamente", "Registro exitoso");
             tbUserName.Clear();
             tbEmail.Clear();
-            pbPassword.Clear();
-            MessageBox.Show("Usuario registrado correctamente", "Registro exitoso");
-        }
+            pbPassword.Clear();        }
 
         private void RegisterAction()
         {

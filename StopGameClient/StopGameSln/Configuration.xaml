@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:StopGame"
         xmlns:Properties="clr-namespace:StopGame.Properties" x:Class="StopGame.Configuration"
         mc:Ignorable="d"
-        Title="Configuration" Height="418" Width="623" Background="#FF4EB4C2" BorderBrush="White">
+        Title="Configuration" Height="418" Width="623" Background="#FF4EB4C2" BorderBrush="White"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background" Value="LightGray" />
@@ -38,7 +39,7 @@
     </Window.Resources>
     <Grid>
         <Label x:Name="lbConfiguration" Content="{x:Static Properties:Resources.lbConfiguration}" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="40" FontFamily="Cooper Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button x:Name="btnExitGame" Content="{x:Static Properties:Resources.btnExitGame}" HorizontalAlignment="Center" Margin="0,309,0,0" VerticalAlignment="Top" FontFamily="Cooper Black" FontSize="20" Height="44" Background="Red" Foreground="White" BorderBrush="White" BorderThickness="4,4,4,4" Width="216"/>
+        <Button x:Name="btnExitGame" Content="{x:Static Properties:Resources.btnExitGame}" HorizontalAlignment="Center" Margin="0,309,0,0" VerticalAlignment="Top" FontFamily="Cooper Black" FontSize="20" Height="44" Background="Red" Foreground="White" BorderBrush="White" BorderThickness="4,4,4,4" Width="216" Click="btnExitGame_Click"/>
         <Label x:Name="lbLanguage" Content="{x:Static Properties:Resources.lbLanguage}" HorizontalAlignment="Left" Margin="24,157,0,0" VerticalAlignment="Top" FontFamily="Cooper Black" FontSize="30" Foreground="White" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="213"/>
         <Button x:Name="btnSpain" Content="{x:Static Properties:Resources.btnSpain}" HorizontalAlignment="Left" Margin="276,111,0,0" VerticalAlignment="Top" FontFamily="Cooper Black" FontSize="30" BorderThickness="4,4,4,4" Height="47" Width="214" BorderBrush="White" Foreground="White" Background="#FF62E4F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnSpain_Click"/>
         <Image x:Name="imgMexico" Source="\Images\mexico.png" HorizontalAlignment="Left" Height="86" Margin="514,94,0,0" VerticalAlignment="Top" Width="80"/>
