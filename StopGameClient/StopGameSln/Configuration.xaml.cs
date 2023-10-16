@@ -38,5 +38,10 @@ namespace StopGame
             System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
             
         }
+
+        private void btnExitGame_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
     }
 }

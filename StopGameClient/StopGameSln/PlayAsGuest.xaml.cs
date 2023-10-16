@@ -31,6 +31,10 @@ namespace StopGame
             main.Show();
         }
 
-
+        private void imgConfiguration_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Configuration configuration = new Configuration();
+            configuration.Show();
+        }
     }
 }

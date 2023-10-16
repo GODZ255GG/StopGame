@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:StopGame"
         xmlns:Properties="clr-namespace:StopGame.Properties" x:Class="StopGame.Login"
         mc:Ignorable="d"
-        Title="Login" Height="515" Width="815">
+        Title="Login" Height="539" Width="815"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="RoundedTextBoxStyle" TargetType="TextBox">
             <Setter Property="Template">
@@ -64,12 +65,12 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid Background="#FF2F6D75" Margin="0,0,0,-6">
+    <Grid Background="#FF2F6D75" Height="529" VerticalAlignment="Top">
 
         <Label x:Name="lbTitle" Content= "{x:Static Properties:Resources.lbTitle}" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontFamily="Cooper Black" FontSize="100" Foreground="#FFADEEF7" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         <Ellipse HorizontalAlignment="Left" Height="74" Margin="701,19,0,0" Stroke="White" VerticalAlignment="Top" Width="74" Fill="#FF4EB4C2" StrokeThickness="4"/>
         <Ellipse HorizontalAlignment="Left" Height="74" Margin="10,383,0,0" Stroke="White" VerticalAlignment="Top" Width="74" Fill="#FF4EB4C2" StrokeThickness="4"/>
-        <Image x:Name="imgConfiguration" Source="/images/cogwheel 1.png" HorizontalAlignment="Left" Height="52" Margin="712,30,0,0" VerticalAlignment="Top" Width="56"/>
+        <Image x:Name="imgConfiguration" Source="/images/cogwheel 1.png" HorizontalAlignment="Left" Height="52" Margin="712,30,0,0" VerticalAlignment="Top" Width="56" MouseLeftButtonDown="imgConfiguration_MouseLeftButtonDown"/>
         <Image x:Name="imgHelp" Source="/images/Problem 2.png" HorizontalAlignment="Left" Height="52" Margin="21,394,0,0" VerticalAlignment="Top" Width="56"/>
         <Label x:Name="lbUserName" Content="{x:Static Properties:Resources.lbUserName}" HorizontalAlignment="Left" Margin="128,155,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="20" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="266" Height="32"/>
         <Label x:Name="lbPassword" Content="{x:Static Properties:Resources.lbPassword}" HorizontalAlignment="Left" Margin="226,244,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="20" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="168"/>

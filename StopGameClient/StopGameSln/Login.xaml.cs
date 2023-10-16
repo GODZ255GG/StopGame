@@ -45,6 +45,7 @@ namespace StopGame
                     try
                     {
                         LoginAction(userName, password);
+                        MessageBox.Show("Bienvenido "+userName, "Inicio de sesión exitoso");
                     }
                     catch (EndpointNotFoundException ex)
                     {
@@ -102,6 +103,12 @@ namespace StopGame
                 isntTooLong = true;
             }
             return isntTooLong;
+        }
+
+        private void imgConfiguration_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Configuration configuration = new Configuration();
+            configuration.Show();
         }
     }
 }
