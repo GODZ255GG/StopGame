@@ -69,8 +69,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StopGameModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="StopModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StopModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StopModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StopModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StopModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>StopGameModel.tt</DependentUpon>
+      <DependentUpon>StopModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +98,13 @@
     <None Include="StopGameModel.edmx.diagram">
       <DependentUpon>StopGameModel.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="StopModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StopModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="StopModel.edmx.diagram">
+      <DependentUpon>StopModel.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="StopGameModel.Context.tt">
@@ -94,6 +116,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>StopGameModel.edmx</DependentUpon>
       <LastGenOutput>StopGameModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="StopModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StopModel.edmx</DependentUpon>
+      <LastGenOutput>StopModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="StopModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StopModel.edmx</DependentUpon>
+      <LastGenOutput>StopModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

@@ -17,7 +17,7 @@ namespace Logic
         public Logic.User Login(string username, string password)
         {
             Logic.User user = new Logic.User();
-            using (var context = new StopGameEntities())
+            using (var context = new StopEntities())
             {
                 var accounts = (from users in context.Users
                                 where users.userName == username && users.password == password
