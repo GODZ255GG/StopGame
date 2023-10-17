@@ -13,10 +13,10 @@ namespace DataAccess
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class StopGameEntities : DbContext
+    public partial class StopEntities : DbContext
     {
-        public StopGameEntities()
-            : base("name=StopGameEntities")
+        public StopEntities()
+            : base("name=StopEntities")
         {
         }
     

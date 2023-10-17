@@ -23,7 +23,7 @@ namespace Logic
         public bool NewRecord(Logic.User user)
         {
             var status = false;
-            using (var context = new StopGameEntities())
+            using (var context = new StopEntities())
             {
                 DataAccess.User newUser = new DataAccess.User()
                 {
