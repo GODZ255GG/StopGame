@@ -54,21 +54,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StopGameModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StopGameModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StopGameModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StopGameModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StopGameModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StopGameModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="StopModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -91,13 +76,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="StopGameModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>StopGameModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="StopGameModel.edmx.diagram">
-      <DependentUpon>StopGameModel.edmx</DependentUpon>
-    </None>
     <EntityDeploy Include="StopModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>StopModel.Designer.cs</LastGenOutput>
@@ -107,16 +85,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="StopGameModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>StopGameModel.edmx</DependentUpon>
-      <LastGenOutput>StopGameModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="StopGameModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>StopGameModel.edmx</DependentUpon>
-      <LastGenOutput>StopGameModel.cs</LastGenOutput>
-    </Content>
     <Content Include="StopModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>StopModel.edmx</DependentUpon>
