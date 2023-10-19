@@ -150,6 +150,9 @@
     <None Include="Connected Services\StopGameService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\StopGameService\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\StopGameService\StopGame.StopGameService.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -165,6 +168,24 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\id.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{289ebd7c-111a-4cd7-b692-72d8a3265914}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cogwheel 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\estadosunidos.png" />
+    <Resource Include="Images\left-arrow.png" />
+    <Resource Include="Images\mexico.png" />
+    <Resource Include="Images\problem 2.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\StopGameService\" />
@@ -183,22 +204,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{289ebd7c-111a-4cd7-b692-72d8a3265914}</Project>
-      <Name>Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\cogwheel 1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\estadosunidos.png" />
-    <Resource Include="Images\left-arrow.png" />
-    <Resource Include="Images\mexico.png" />
-    <Resource Include="Images\problem 2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

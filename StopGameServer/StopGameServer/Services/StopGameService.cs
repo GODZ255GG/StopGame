@@ -9,9 +9,10 @@ using Logic;
 
 namespace Services
 {
-    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple, InstanceContextMode = InstanceContextMode.Single)]
+    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public partial class StopGameService : IUserManager
     {
+
         public Logic.User Login(String userName, String password)
         {
             var user = new Logic.User()
@@ -49,6 +50,25 @@ namespace Services
                 
             }
             return status;
+        }
+
+    }
+
+    public partial class StopGameService : IUpdateProfile
+    {
+        public List<String> GetGlobalUser()
+        {
+            ListUsers list = new ListUsers();
+            List<string> result = new List<string>();
+            try
+            {
+                result = list.ListAllUser();
+            }
+            catch (EntityException ex)
+            {
+
+            };
+            return result;
         }
     }
 }

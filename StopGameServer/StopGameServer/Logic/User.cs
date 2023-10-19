@@ -9,6 +9,9 @@ using System.Runtime.Serialization;
 
 namespace Logic
 {
+    //El OperationContext que se encuentra en esta clase cumple la función de devolver un objeto User completo
+    //Utilizamos el OperationContext sin serializar, y poder convertir los datos del EntitiyFramework a una clase
+    //serializable que pueda ocupar el servicio en conjunto con los demás OperationContext
     [DataContract]
     public class User
     {

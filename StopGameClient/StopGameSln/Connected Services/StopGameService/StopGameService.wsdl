@@ -8,11 +8,20 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IUpdateProfile_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Logic" />
+      <xsd:import schemaLocation="http://172.20.10.5:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://172.20.10.5:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://172.20.10.5:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Logic" />
+      <xsd:import schemaLocation="http://172.20.10.5:8082/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserManager_Login_InputMessage">
@@ -27,6 +36,12 @@
   <wsdl:message name="IUserManager_Register_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegisterResponse" />
   </wsdl:message>
+  <wsdl:message name="IUpdateProfile_GetGlobalUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGlobalUser" />
+  </wsdl:message>
+  <wsdl:message name="IUpdateProfile_GetGlobalUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGlobalUserResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/Login" message="tns:IUserManager_Login_InputMessage" />
@@ -35,6 +50,12 @@
     <wsdl:operation name="Register">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/Register" message="tns:IUserManager_Register_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/RegisterResponse" message="tns:IUserManager_Register_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IUpdateProfile">
+    <wsdl:operation name="GetGlobalUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUpdateProfile/GetGlobalUser" message="tns:IUpdateProfile_GetGlobalUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUpdateProfile/GetGlobalUserResponse" message="tns:IUpdateProfile_GetGlobalUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
@@ -59,11 +80,30 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IUpdateProfile" type="tns:IUpdateProfile">
+    <wsp:PolicyReference URI="#NetTcpBinding_IUpdateProfile_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetGlobalUser">
+      <soap12:operation soapAction="http://tempuri.org/IUpdateProfile/GetGlobalUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="StopGameService">
     <wsdl:port name="NetTcpBinding_IUserManager" binding="tns:NetTcpBinding_IUserManager">
-      <soap12:address location="net.tcp://localhost:8081/Services" />
+      <soap12:address location="net.tcp://172.20.10.5:8081/Services" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/Services</wsa10:Address>
+        <wsa10:Address>net.tcp://172.20.10.5:8081/Services</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IUpdateProfile" binding="tns:NetTcpBinding_IUpdateProfile">
+      <soap12:address location="net.tcp://172.20.10.5:8081/Services" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://172.20.10.5:8081/Services</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>

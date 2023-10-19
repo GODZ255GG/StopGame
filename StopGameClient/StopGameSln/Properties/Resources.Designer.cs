@@ -61,6 +61,15 @@ namespace StopGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a CREAR SALA.
+        /// </summary>
+        public static string btnCreateRoom {
+            get {
+                return ResourceManager.GetString("btnCreateRoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a INGLES.
         /// </summary>
         public static string btnEnglish {
@@ -75,6 +84,15 @@ namespace StopGame.Properties {
         public static string btnExitGame {
             get {
                 return ResourceManager.GetString("btnExitGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a UNIRSE A SALA.
+        /// </summary>
+        public static string btnJoinRoom {
+            get {
+                return ResourceManager.GetString("btnJoinRoom", resourceCulture);
             }
         }
         

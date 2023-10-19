@@ -24,7 +24,8 @@ namespace StopGame
             MessageBox.Show("Usuario registrado correctamente", "Registro exitoso");
             tbUserName.Clear();
             tbEmail.Clear();
-            pbPassword.Clear();        }
+            pbPassword.Clear();        
+        }
 
         private void RegisterAction()
         {

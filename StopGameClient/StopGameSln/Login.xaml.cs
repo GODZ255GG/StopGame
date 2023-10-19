@@ -81,7 +81,7 @@ namespace StopGame
             }
             else
             {
-                //MessageBox.Show(Properties.Resources);
+                
             }
         }
 
