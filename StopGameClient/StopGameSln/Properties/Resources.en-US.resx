@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnCreateRoom" xml:space="preserve">
+    <value>CREATE ROOM</value>
+  </data>
   <data name="btnEnglish" xml:space="preserve">
     <value>ENGLISH</value>
   </data>
   <data name="btnExitGame" xml:space="preserve">
     <value>EXIT GAME</value>
+  </data>
+  <data name="btnJoinRoom" xml:space="preserve">
+    <value>JOIN ROOM</value>
   </data>
   <data name="btnLogin" xml:space="preserve">
     <value>SIGN IN</value>

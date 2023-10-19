@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="21bea356-07f7-4053-80cd-a67db87af9f3" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="84cf6f9e-97fe-4b4a-ba1a-42f643ca7489" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,14 +19,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8080/" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://172.20.10.5:8082/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="62560ca8-8c13-4e6a-9955-726fbf6fe693" SourceId="1" SourceUrl="http://localhost:8080/?disco" />
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="7f049ec6-dcdb-4720-b4b6-92e4fb8de4c7" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd2" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="6700fe6f-d259-414c-8d7c-1716339dc42f" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd1" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="32558d6e-7ce5-4a4f-a257-f69242986585" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd0" />
-    <MetadataFile FileName="StopGameService.wsdl" MetadataType="Wsdl" ID="8b2645dd-2316-470c-8679-6d1cdea00a4b" SourceId="1" SourceUrl="http://localhost:8080/?wsdl" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="d9380c48-9968-4061-854d-03f5cfb6bd10" SourceId="1" SourceUrl="http://172.20.10.5:8082/?xsd=xsd3" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="24424690-423b-44ee-82e5-94c95bd8da49" SourceId="1" SourceUrl="http://172.20.10.5:8082/?xsd=xsd2" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="1e443931-f234-425f-b2ac-d47158942c98" SourceId="1" SourceUrl="http://172.20.10.5:8082/?xsd=xsd1" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="6623629e-4f4b-45e8-ac0a-9285f8103dc0" SourceId="1" SourceUrl="http://172.20.10.5:8082/?xsd=xsd0" />
+    <MetadataFile FileName="StopGameService.wsdl" MetadataType="Wsdl" ID="74f73a5b-1116-4613-97c2-1977c01de5d9" SourceId="1" SourceUrl="http://172.20.10.5:8082/?wsdl" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="d247771e-a0fc-48fc-8b1e-c3bafffe1486" SourceId="1" SourceUrl="http://172.20.10.5:8082/?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

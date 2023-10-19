@@ -182,4 +182,51 @@ namespace StopGame.StopGameService {
             return base.Channel.RegisterAsync(user);
         }
     }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="StopGameService.IUpdateProfile")]
+    public interface IUpdateProfile {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUpdateProfile/GetGlobalUser", ReplyAction="http://tempuri.org/IUpdateProfile/GetGlobalUserResponse")]
+        string[] GetGlobalUser();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUpdateProfile/GetGlobalUser", ReplyAction="http://tempuri.org/IUpdateProfile/GetGlobalUserResponse")]
+        System.Threading.Tasks.Task<string[]> GetGlobalUserAsync();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IUpdateProfileChannel : StopGame.StopGameService.IUpdateProfile, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class UpdateProfileClient : System.ServiceModel.ClientBase<StopGame.StopGameService.IUpdateProfile>, StopGame.StopGameService.IUpdateProfile {
+        
+        public UpdateProfileClient() {
+        }
+        
+        public UpdateProfileClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public UpdateProfileClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public UpdateProfileClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public UpdateProfileClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public string[] GetGlobalUser() {
+            return base.Channel.GetGlobalUser();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetGlobalUserAsync() {
+            return base.Channel.GetGlobalUserAsync();
+        }
+    }
 }
