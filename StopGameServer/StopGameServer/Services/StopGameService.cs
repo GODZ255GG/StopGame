@@ -9,7 +9,7 @@ using Logic;
 
 namespace Services
 {
-    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
+    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant, InstanceContextMode = InstanceContextMode.Single)]
     public partial class StopGameService : IUserManager
     {
 
@@ -69,6 +69,37 @@ namespace Services
 
             };
             return result;
+        }
+    }
+
+    public partial class StopGameService : IGameServices
+    {
+        List<string> Users = new List<string>();
+        List<IGameServiceCallback> Callbacks = new List<IGameServiceCallback>();
+        public void Connect(string userName)
+        {
+            var callback = OperationContext.Current.GetCallbackChannel<IGameServiceCallback>();
+            Users.Add(userName);
+            Callbacks.Add(callback);
+
+            UpdateAllUsers();
+        }
+
+        public void Disconnect(string userName)
+        {
+            var callback = OperationContext.Current.GetCallbackChannel<IGameServiceCallback>();
+            Users.Remove(userName);
+            Callbacks.Remove(callback);
+
+            UpdateAllUsers();
+        }
+
+        private void UpdateAllUsers()
+        {
+            foreach (var callback in Callbacks)
+            {
+                callback.UpdateUsersList(Users);
+            }
         }
     }
 }

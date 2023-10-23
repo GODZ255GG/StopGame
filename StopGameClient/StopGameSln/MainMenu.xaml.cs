@@ -1,8 +1,12 @@
-﻿using StopGame.StopGameService;
+﻿using Domain;
+using StopGame.StopGameService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.Remoting.Contexts;
 using System.ServiceModel;
+using System.ServiceModel.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,28 +23,28 @@ namespace StopGame
     /// <summary>
     /// Lógica de interacción para MainMenu.xaml
     /// </summary>
-    public partial class MainMenu : Window
+    public partial class MainMenu : Window, StopGameService.IGameServicesCallback
     {
         private List<String> strings = new List<String>();
-
+        private InstanceContext context;
+        private StopGameService.GameServicesClient users;
         public MainMenu()
         {
-            InitializeComponent(); 
-            CargeAllUsers();
+            InitializeComponent();
+            context = new InstanceContext(this);
+            users = new GameServicesClient(context);
+            AddPlayerToList();
         }
 
-        public void CargeAllUsers()
+        public void AddPlayerToList()
         {
-            StopGameService.UpdateProfileClient updateProfileClient = new StopGameService.UpdateProfileClient();
-            try
-            {
-                strings = updateProfileClient.GetGlobalUser().ToList();
-                lbxUsers.ItemsSource = strings;
-            }
-            catch (Exception ex)
-            {
+            users.Connect(Domain.User.UserClient.UserName);
+            lbuserName.Content = Domain.User.UserClient.UserName;
+        }
 
-            }
+        public void UpdateUsersList(string[] users)
+        {
+            lbxUsers.ItemsSource = users;
         }
 
         private void imgConfiguration_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
