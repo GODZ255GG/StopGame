@@ -229,4 +229,73 @@ namespace StopGame.StopGameService {
             return base.Channel.GetGlobalUserAsync();
         }
     }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="StopGameService.IGameServices", CallbackContract=typeof(StopGame.StopGameService.IGameServicesCallback))]
+    public interface IGameServices {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/Connect")]
+        void Connect(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/Connect")]
+        System.Threading.Tasks.Task ConnectAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/Disconnect")]
+        void Disconnect(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/Disconnect")]
+        System.Threading.Tasks.Task DisconnectAsync(string userName);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IGameServicesCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/UpdateUsersList")]
+        void UpdateUsersList(string[] users);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IGameServicesChannel : StopGame.StopGameService.IGameServices, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GameServicesClient : System.ServiceModel.DuplexClientBase<StopGame.StopGameService.IGameServices>, StopGame.StopGameService.IGameServices {
+        
+        public GameServicesClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public GameServicesClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public GameServicesClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public GameServicesClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public GameServicesClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public void Connect(string userName) {
+            base.Channel.Connect(userName);
+        }
+        
+        public System.Threading.Tasks.Task ConnectAsync(string userName) {
+            return base.Channel.ConnectAsync(userName);
+        }
+        
+        public void Disconnect(string userName) {
+            base.Channel.Disconnect(userName);
+        }
+        
+        public System.Threading.Tasks.Task DisconnectAsync(string userName) {
+            return base.Channel.DisconnectAsync(userName);
+        }
+    }
 }

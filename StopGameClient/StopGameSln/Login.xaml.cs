@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Domain;
+using StopGame.StopGameService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -25,6 +27,7 @@ namespace StopGame
         public Login()
         {
             InitializeComponent();
+            Domain.User.userClient = new Domain.User();
         }
 
         private void imgReturn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -46,6 +49,7 @@ namespace StopGame
                     {
                         LoginAction(userName, password);
                         MessageBox.Show("Bienvenido "+userName, "Inicio de sesión exitoso");
+                        Domain.User.userClient.UserName = userName;
                     }
                     catch (EndpointNotFoundException ex)
                     {

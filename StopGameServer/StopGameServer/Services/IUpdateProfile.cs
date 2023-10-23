@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Services
 {
     [ServiceContract]
-    internal interface IUpdateProfile
+    public interface IUpdateProfile
     {
         [OperationContract]
         List<String> GetGlobalUser();

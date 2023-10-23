@@ -14,7 +14,7 @@ namespace Domain
         private string password;
 
         #region Singletone
-        private static User userClient;
+        public static User userClient;
         public static User UserClient { get { return userClient; } set { userClient = value; } }
         #endregion
 
