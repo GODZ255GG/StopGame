@@ -39,7 +39,7 @@ namespace StopGame
         public void AddPlayerToList()
         {
             users.Connect(Domain.User.UserClient.UserName);
-            lbuserName.Content = Domain.User.UserClient.UserName;
+            lbUserName.Content = Domain.User.UserClient.UserName;
         }
 
         public void UpdateUsersList(string[] users)
