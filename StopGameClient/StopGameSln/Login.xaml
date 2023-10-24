@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:StopGame"
         xmlns:Properties="clr-namespace:StopGame.Properties" x:Class="StopGame.Login"
         mc:Ignorable="d"
-        Title="Login" Height="539" Width="815"
+        Title="Login" Height="546" Width="811"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="RoundedTextBoxStyle" TargetType="TextBox">
@@ -66,22 +66,32 @@
         </Style>
     </Window.Resources>
     <Grid Background="#FF2F6D75" Height="529" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="22*"/>
+            <ColumnDefinition Width="793*"/>
+        </Grid.ColumnDefinitions>
 
-        <Label x:Name="lbTitle" Content= "{x:Static Properties:Resources.lbTitle}" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontFamily="Cooper Black" FontSize="100" Foreground="#FFADEEF7" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Ellipse HorizontalAlignment="Left" Height="74" Margin="701,19,0,0" Stroke="White" VerticalAlignment="Top" Width="74" Fill="#FF4EB4C2" StrokeThickness="4"/>
-        <Ellipse HorizontalAlignment="Left" Height="74" Margin="10,383,0,0" Stroke="White" VerticalAlignment="Top" Width="74" Fill="#FF4EB4C2" StrokeThickness="4"/>
-        <Image x:Name="imgConfiguration" Source="/images/cogwheel 1.png" HorizontalAlignment="Left" Height="52" Margin="712,30,0,0" VerticalAlignment="Top" Width="56" MouseLeftButtonDown="imgConfiguration_MouseLeftButtonDown"/>
-        <Image x:Name="imgHelp" Source="/images/Problem 2.png" HorizontalAlignment="Left" Height="52" Margin="21,394,0,0" VerticalAlignment="Top" Width="56"/>
-        <Label x:Name="lbUserName" Content="{x:Static Properties:Resources.lbUserName}" HorizontalAlignment="Left" Margin="128,155,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="20" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="266" Height="32"/>
-        <Label x:Name="lbPassword" Content="{x:Static Properties:Resources.lbPassword}" HorizontalAlignment="Left" Margin="226,244,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="20" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="168"/>
-        <Label x:Name="lbConfiguration" Content="{x:Static Properties:Resources.lbConfiguration}" HorizontalAlignment="Left" Margin="686,93,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="10" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-        <Label x:Name="lbHelp" Content="{x:Static Properties:Resources.lbHelp}" HorizontalAlignment="Left" Margin="22,462,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="10" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="tbUserName" Style="{StaticResource RoundedTextBoxStyle}" HorizontalAlignment="Left" Margin="430,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="282" FontSize="20" FontFamily="Cooper Black" Foreground="White" Background="#FF62E4F5" BorderBrush="White" Padding="5,5,5,5" BorderThickness="4,4,4,4" Height="41"/>
-        <PasswordBox x:Name="pbPassword" Style="{StaticResource RoundedPasswordBoxStyle}" HorizontalAlignment="Left" Margin="430,240,0,0" VerticalAlignment="Top" Width="282" Height="41" Background="#FF62E4F5" BorderBrush="White" Padding="5,5,5,5" BorderThickness="4,4,4,4" Foreground="#FFFDFDFD" FontSize="20" FontFamily="Cooper Black" PasswordChar="*"/>
-        <Button x:Name="btnLogin" Content="{x:Static Properties:Resources.btnLogin}" HorizontalAlignment="Center" Margin="0,333,0,0" VerticalAlignment="Top" Height="44" Width="195" FontSize="20" FontFamily="Cooper Black" Foreground="White" Background="#FF62E4F5" BorderThickness="4,4,4,4" BorderBrush="White" Click="btnLogin_Click"/>
-        <Image x:Name="imgReturn" Source="/images/left-arrow.png" HorizontalAlignment="Left" Height="74" Margin="21,19,0,0" VerticalAlignment="Top" Width="74" MouseLeftButtonDown="imgReturn_MouseLeftButtonDown"/>
-        <Label x:Name="lbPasswordError" Content="" HorizontalAlignment="Left" Margin="430,282,0,0" VerticalAlignment="Top" Width="282" FontFamily="Cooper Black" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="Red"/>
-        <Label x:Name="lbEmailEmail" Content="" HorizontalAlignment="Left" Margin="430,192,0,0" VerticalAlignment="Top" Width="282" FontFamily="Cooper Black" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="Red"/>
+        <Label x:Name="lbTitle" Content= "{x:Static Properties:Resources.lbTitle}" HorizontalAlignment="Left" Margin="145,64,0,0" VerticalAlignment="Top" FontFamily="Cooper Black" FontSize="100" Foreground="#FFADEEF7" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Grid.Column="1"/>
+        <Image HorizontalAlignment="Left" Source="\images\gros-plan-resume-turquoise-cercl-removebg-preview.png" Height="557" VerticalAlignment="Top" Width="812" Margin="-1,-6,0,0" Grid.ColumnSpan="2">
+            <Image.OpacityMask>
+                <SolidColorBrush Color="Black" Opacity="0.3"/>
+            </Image.OpacityMask>
+        </Image>
+        <Ellipse HorizontalAlignment="Left" Height="74" Margin="679,19,0,0" Stroke="White" VerticalAlignment="Top" Width="74" Fill="#FF4EB4C2" StrokeThickness="4" Grid.Column="1"/>
+        <Ellipse HorizontalAlignment="Left" Height="74" Margin="10,398,0,0" Stroke="White" VerticalAlignment="Top" Width="74" Fill="#FF4EB4C2" StrokeThickness="4" Grid.ColumnSpan="2"/>
+        <Image x:Name="imgConfiguration" Source="/images/cogwheel 1.png" HorizontalAlignment="Left" Height="52" Margin="690,30,0,0" VerticalAlignment="Top" Width="56" MouseLeftButtonDown="imgConfiguration_MouseLeftButtonDown" Grid.Column="1"/>
+        <Image x:Name="imgHelp" Source="/images/Problem 2.png" HorizontalAlignment="Left" Height="52" Margin="21,409,0,0" VerticalAlignment="Top" Width="56" Grid.ColumnSpan="2"/>
+        <Label x:Name="lbUserName" Content="{x:Static Properties:Resources.lbUserName}" HorizontalAlignment="Left" Margin="106,209,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="20" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="266" Height="32" Grid.Column="1"/>
+        <Label x:Name="lbPassword" Content="{x:Static Properties:Resources.lbPassword}" HorizontalAlignment="Left" Margin="204,298,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="20" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="168" Grid.Column="1"/>
+        <Label x:Name="lbConfiguration" Content="{x:Static Properties:Resources.lbConfiguration}" HorizontalAlignment="Left" Margin="664,93,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="10" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.Column="1"/>
+        <Label x:Name="lbHelp" Content="{x:Static Properties:Resources.lbHelp}" HorizontalAlignment="Left" Margin="22,477,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="10" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="tbUserName" Style="{StaticResource RoundedTextBoxStyle}" HorizontalAlignment="Left" Margin="408,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="282" FontSize="20" FontFamily="Cooper Black" Foreground="White" Background="#FF62E4F5" BorderBrush="White" Padding="5,5,5,5" BorderThickness="4,4,4,4" Height="41" Grid.Column="1"/>
+        <PasswordBox x:Name="pbPassword" Style="{StaticResource RoundedPasswordBoxStyle}" HorizontalAlignment="Left" Margin="408,294,0,0" VerticalAlignment="Top" Width="282" Height="41" Background="#FF62E4F5" BorderBrush="White" Padding="5,5,5,5" BorderThickness="4,4,4,4" Foreground="#FFFDFDFD" FontSize="20" FontFamily="Cooper Black" PasswordChar="*" Grid.Column="1"/>
+        <Ellipse HorizontalAlignment="Left" Height="74" Margin="0,19,0,0" Stroke="White" VerticalAlignment="Top" Width="74" Fill="#FF4EB4C2" StrokeThickness="4" Grid.Column="1"/>
+        <Button x:Name="btnLogin" Content="{x:Static Properties:Resources.btnLogin}" HorizontalAlignment="Left" Margin="288,387,0,0" VerticalAlignment="Top" Height="44" Width="195" FontSize="20" FontFamily="Cooper Black" Foreground="White" Background="#FF62E4F5" BorderThickness="4,4,4,4" BorderBrush="White" Click="btnLogin_Click" Grid.Column="1"/>
+        <Image x:Name="imgReturn" Source="/images/arrow-left.png" HorizontalAlignment="Left" Height="74" Margin="4,23,0,0" VerticalAlignment="Top" Width="66" MouseLeftButtonDown="imgReturn_MouseLeftButtonDown" Grid.Column="1"/>
+        <Label x:Name="lbPasswordError" Content="" HorizontalAlignment="Left" Margin="408,336,0,0" VerticalAlignment="Top" Width="282" FontFamily="Cooper Black" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="Red" Grid.Column="1"/>
+        <Label x:Name="lbEmailEmail" Content="" HorizontalAlignment="Left" Margin="408,247,0,0" VerticalAlignment="Top" Width="282" FontFamily="Cooper Black" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="Red" Grid.Column="1"/>
 
     </Grid>
 </Window>

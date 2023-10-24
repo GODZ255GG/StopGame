@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:StopGame"
         xmlns:Properties="clr-namespace:StopGame.Properties" x:Class="StopGame.PlayAsGuest"
         mc:Ignorable="d"
-        Title="PlayAsGuest" Height="526" Width="809"
+        Title="PlayAsGuest" Height="546" Width="811"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="RoundedTextBoxStyle" TargetType="{x:Type TextBox}">
@@ -66,18 +66,23 @@
         </Style>
     </Window.Resources>
     <Grid Background="#FF2F6D75">
-
-        <Label x:Name="lbTitle" Content= "{x:Static Properties:Resources.lbTitle}" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontFamily="Cooper Black" FontSize="100" Foreground="#FFADEEF7" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Label x:Name="lbUserName" Content="{x:Static Properties:Resources.lbUserName}" HorizontalAlignment="Left" Margin="134,208,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="20" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="251"/>
+        <Image HorizontalAlignment="Center" Source="\images\gros-plan-resume-turquoise-cercl-removebg-preview.png" Height="557" VerticalAlignment="Center" Width="812">
+            <Image.OpacityMask>
+                <SolidColorBrush Color="Black" Opacity="0.3"/>
+            </Image.OpacityMask>
+        </Image>
+        <Label x:Name="lbTitle" Content= "{x:Static Properties:Resources.lbTitle}" HorizontalAlignment="Center" Margin="0,104,0,0" VerticalAlignment="Top" FontFamily="Cooper Black" FontSize="100" Foreground="#FFADEEF7" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
+        <Label x:Name="lbUserName" Content="{x:Static Properties:Resources.lbUserName}" HorizontalAlignment="Left" Margin="134,255,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="20" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="251"/>
         <Label x:Name="lbConfiguration" Content="{x:Static Properties:Resources.lbConfiguration}" HorizontalAlignment="Left" Margin="686,93,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="10" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
         <Ellipse HorizontalAlignment="Left" Height="74" Margin="701,19,0,0" Stroke="White" VerticalAlignment="Top" Width="74" Fill="#FF4EB4C2" StrokeThickness="4"/>
-        <Ellipse HorizontalAlignment="Left" Height="74" Margin="10,383,0,0" Stroke="White" VerticalAlignment="Top" Width="74" Fill="#FF4EB4C2" StrokeThickness="4"/>
-        <Label x:Name="lbHelp" Content="{x:Static Properties:Resources.lbHelp}" HorizontalAlignment="Left" Margin="22,462,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="10" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="tbUserName" Style="{StaticResource RoundedTextBoxStyle}" HorizontalAlignment="Left" Margin="421,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="282" FontSize="20" FontFamily="Cooper Black" Foreground="White" Background="#FF62E4F5" BorderBrush="White" Padding="5,5,5,5" BorderThickness="4,4,4,4" Height="41"/>
-        <Button x:Name="btnPublicGames" Content="{x:Static Properties:Resources.btnPublicGames}" HorizontalAlignment="Left" Margin="249,298,0,0" VerticalAlignment="Top" Height="43" Width="314" FontSize="20" FontFamily="Cooper Black" Foreground="White" Background="#FF62E4F5" BorderThickness="4,4,4,4" BorderBrush="White" />
+        <Ellipse HorizontalAlignment="Left" Height="74" Margin="10,398,0,0" Stroke="White" VerticalAlignment="Top" Width="74" Fill="#FF4EB4C2" StrokeThickness="4"/>
+        <Label x:Name="lbHelp" Content="{x:Static Properties:Resources.lbHelp}" HorizontalAlignment="Left" Margin="22,477,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="10" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="tbUserName" Style="{StaticResource RoundedTextBoxStyle}" HorizontalAlignment="Left" Margin="421,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="282" FontSize="20" FontFamily="Cooper Black" Foreground="White" Background="#FF62E4F5" BorderBrush="White" Padding="5,5,5,5" BorderThickness="4,4,4,4" Height="41"/>
+        <Button x:Name="btnPublicGames" Content="{x:Static Properties:Resources.btnPublicGames}" HorizontalAlignment="Left" Margin="249,344,0,0" VerticalAlignment="Top" Height="43" Width="314" FontSize="20" FontFamily="Cooper Black" Foreground="White" Background="#FF62E4F5" BorderThickness="4,4,4,4" BorderBrush="White" />
         <Image x:Name="imgConfiguration" Source="\images\cogwheel 1.png" HorizontalAlignment="Left" Height="52" Margin="712,30,0,0" VerticalAlignment="Top" Width="56" MouseLeftButtonDown="imgConfiguration_MouseLeftButtonDown"/>
-        <Image x:Name="imgHelp" Source="\images\problem 2.png" HorizontalAlignment="Left" Height="52" Margin="21,394,0,0" VerticalAlignment="Top" Width="56"/>
-        <Image x:Name="imgReturn" Source="\images\left-arrow.png" HorizontalAlignment="Left" Height="74" Margin="22,19,0,0" VerticalAlignment="Top" Width="74" MouseLeftButtonDown="imgReturn_MouseLeftButtonDown"/>
+        <Image x:Name="imgHelp" Source="\images\problem 2.png" HorizontalAlignment="Left" Height="52" Margin="21,409,0,0" VerticalAlignment="Top" Width="56"/>
+        <Ellipse HorizontalAlignment="Left" Height="74" Margin="22,19,0,0" Stroke="White" VerticalAlignment="Top" Width="74" Fill="#FF4EB4C2" StrokeThickness="4"/>
+        <Image x:Name="imgReturn" Source="\images\arrow-left.png" HorizontalAlignment="Left" Height="74" Margin="26,23,0,0" VerticalAlignment="Top" Width="66" MouseLeftButtonDown="imgReturn_MouseLeftButtonDown"/>
 
     </Grid>
 </Window>
