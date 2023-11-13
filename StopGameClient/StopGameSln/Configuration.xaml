@@ -38,12 +38,19 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Label x:Name="lbConfiguration" Content="{x:Static Properties:Resources.lbConfiguration}" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="40" FontFamily="Cooper Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Image HorizontalAlignment="Center" Source="\images\gros-plan-resume-turquoise-cercl-removebg-preview.png" Height="418" VerticalAlignment="Center" Width="622">
+            <Image.OpacityMask>
+                <SolidColorBrush Color="Black" Opacity="0.8"/>
+            </Image.OpacityMask>
+        </Image>
+        <Label x:Name="lbConfiguration" Content="{x:Static Properties:Resources.lbConfiguration}" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" Background="Transparent" Foreground="White" FontSize="40" FontFamily="Cooper Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
         <Button x:Name="btnExitGame" Content="{x:Static Properties:Resources.btnExitGame}" HorizontalAlignment="Center" Margin="0,309,0,0" VerticalAlignment="Top" FontFamily="Cooper Black" FontSize="20" Height="44" Background="Red" Foreground="White" BorderBrush="White" BorderThickness="4,4,4,4" Width="216" Click="btnExitGame_Click"/>
         <Label x:Name="lbLanguage" Content="{x:Static Properties:Resources.lbLanguage}" HorizontalAlignment="Left" Margin="24,157,0,0" VerticalAlignment="Top" FontFamily="Cooper Black" FontSize="30" Foreground="White" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Width="213"/>
         <Button x:Name="btnSpain" Content="{x:Static Properties:Resources.btnSpain}" HorizontalAlignment="Left" Margin="276,111,0,0" VerticalAlignment="Top" FontFamily="Cooper Black" FontSize="30" BorderThickness="4,4,4,4" Height="47" Width="214" BorderBrush="White" Foreground="White" Background="#FF62E4F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnSpain_Click"/>
         <Image x:Name="imgMexico" Source="\Images\mexico.png" HorizontalAlignment="Left" Height="86" Margin="514,94,0,0" VerticalAlignment="Top" Width="80"/>
         <Button x:Name="btnEnglish" Content="{x:Static Properties:Resources.btnEnglish}" HorizontalAlignment="Left" Margin="276,190,0,0" VerticalAlignment="Top" FontFamily="Cooper Black" FontSize="30" BorderThickness="4,4,4,4" Height="47" Width="214" BorderBrush="White" Foreground="White" Background="#FF62E4F5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnEnglish_Click"/>
         <Image x:Name="imgEU" Source="\Images\estadosunidos.png" HorizontalAlignment="Left" Height="86" Margin="514,174,0,0" VerticalAlignment="Top" Width="80"/>
+        <Ellipse HorizontalAlignment="Left" Height="74" Margin="18,15,0,0" Stroke="White" VerticalAlignment="Top" Width="74" Fill="#FF4EB4C2" StrokeThickness="4"/>
+        <Image x:Name="imgReturn" Source="/images/arrow-left.png" HorizontalAlignment="Left" Height="66" Margin="22,19,0,0" VerticalAlignment="Top" Width="66" MouseLeftButtonDown="ImgProfilePicture_MouseLeftButtonDown"/>
     </Grid>
 </Window>

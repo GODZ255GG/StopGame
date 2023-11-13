@@ -12,9 +12,10 @@ namespace Domain
         private string userName;
         private string email;
         private string password;
+        private string profileImage;
 
         #region Singletone
-        public static User userClient;
+        private static User userClient;
         public static User UserClient { get { return userClient; } set { userClient = value; } }
         #endregion
 
@@ -22,5 +23,6 @@ namespace Domain
         public string UserName { get { return userName; } set { userName = value; } }
         public string Email { get { return email; } set { email = value; } }
         public string Password { get { return password; } set { password = value; } }
+        public string ProfileImage { get {  return profileImage; } set {  profileImage = value; } }
     }
 }

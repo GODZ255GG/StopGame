@@ -10,17 +10,23 @@ namespace Services
     [ServiceContract(CallbackContract = typeof(IGameServiceCallback))]
     public interface IGameServices
     {
-        [OperationContract(IsOneWay = true)]
-        void Connect(string userName);
+        [OperationContract]
+        bool NewRoom(string hostUserName, string roomId);
+        [OperationContract]
+        string GenerateRoomCode();
+        [OperationContract]
+        void Connect(string userName, string roomId, string message);
+        [OperationContract]
+        void Disconnect(string userName, string roomId, string message);
 
         [OperationContract(IsOneWay = true)]
-        void Disconnect(string userName);
+        void SendMessage(string message, string userName, string roomId);
     }
 
     [ServiceContract]
     public interface IGameServiceCallback
     {
         [OperationContract(IsOneWay = true)]
-        void UpdateUsersList(List<string> users);
+        void MessageCallBack(string message);
     }
 }

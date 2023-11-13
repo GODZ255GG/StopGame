@@ -32,7 +32,13 @@ namespace StopGame.StopGameService {
         private string PasswordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProfileImageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TokensField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserNameField;
@@ -87,6 +93,19 @@ namespace StopGame.StopGameService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProfileImage {
+            get {
+                return this.ProfileImageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProfileImageField, value) != true)) {
+                    this.ProfileImageField = value;
+                    this.RaisePropertyChanged("ProfileImage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public bool Status {
             get {
                 return this.StatusField;
@@ -95,6 +114,19 @@ namespace StopGame.StopGameService {
                 if ((this.StatusField.Equals(value) != true)) {
                     this.StatusField = value;
                     this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Tokens {
+            get {
+                return this.TokensField;
+            }
+            set {
+                if ((this.TokensField.Equals(value) != true)) {
+                    this.TokensField = value;
+                    this.RaisePropertyChanged("Tokens");
                 }
             }
         }
@@ -137,6 +169,18 @@ namespace StopGame.StopGameService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/Register", ReplyAction="http://tempuri.org/IUserManager/RegisterResponse")]
         System.Threading.Tasks.Task<bool> RegisterAsync(StopGame.StopGameService.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ExistsEmailOrUserName", ReplyAction="http://tempuri.org/IUserManager/ExistsEmailOrUserNameResponse")]
+        bool ExistsEmailOrUserName(string userName, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ExistsEmailOrUserName", ReplyAction="http://tempuri.org/IUserManager/ExistsEmailOrUserNameResponse")]
+        System.Threading.Tasks.Task<bool> ExistsEmailOrUserNameAsync(string userName, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/SendValidationEmail", ReplyAction="http://tempuri.org/IUserManager/SendValidationEmailResponse")]
+        bool SendValidationEmail(string toEmail, string affair, int validationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/SendValidationEmail", ReplyAction="http://tempuri.org/IUserManager/SendValidationEmailResponse")]
+        System.Threading.Tasks.Task<bool> SendValidationEmailAsync(string toEmail, string affair, int validationCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -181,52 +225,21 @@ namespace StopGame.StopGameService {
         public System.Threading.Tasks.Task<bool> RegisterAsync(StopGame.StopGameService.User user) {
             return base.Channel.RegisterAsync(user);
         }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="StopGameService.IUpdateProfile")]
-    public interface IUpdateProfile {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUpdateProfile/GetGlobalUser", ReplyAction="http://tempuri.org/IUpdateProfile/GetGlobalUserResponse")]
-        string[] GetGlobalUser();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUpdateProfile/GetGlobalUser", ReplyAction="http://tempuri.org/IUpdateProfile/GetGlobalUserResponse")]
-        System.Threading.Tasks.Task<string[]> GetGlobalUserAsync();
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IUpdateProfileChannel : StopGame.StopGameService.IUpdateProfile, System.ServiceModel.IClientChannel {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class UpdateProfileClient : System.ServiceModel.ClientBase<StopGame.StopGameService.IUpdateProfile>, StopGame.StopGameService.IUpdateProfile {
-        
-        public UpdateProfileClient() {
+        public bool ExistsEmailOrUserName(string userName, string email) {
+            return base.Channel.ExistsEmailOrUserName(userName, email);
         }
         
-        public UpdateProfileClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public System.Threading.Tasks.Task<bool> ExistsEmailOrUserNameAsync(string userName, string email) {
+            return base.Channel.ExistsEmailOrUserNameAsync(userName, email);
         }
         
-        public UpdateProfileClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public bool SendValidationEmail(string toEmail, string affair, int validationCode) {
+            return base.Channel.SendValidationEmail(toEmail, affair, validationCode);
         }
         
-        public UpdateProfileClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
-        }
-        
-        public UpdateProfileClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
-        }
-        
-        public string[] GetGlobalUser() {
-            return base.Channel.GetGlobalUser();
-        }
-        
-        public System.Threading.Tasks.Task<string[]> GetGlobalUserAsync() {
-            return base.Channel.GetGlobalUserAsync();
+        public System.Threading.Tasks.Task<bool> SendValidationEmailAsync(string toEmail, string affair, int validationCode) {
+            return base.Channel.SendValidationEmailAsync(toEmail, affair, validationCode);
         }
     }
     
@@ -234,24 +247,42 @@ namespace StopGame.StopGameService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="StopGameService.IGameServices", CallbackContract=typeof(StopGame.StopGameService.IGameServicesCallback))]
     public interface IGameServices {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/Connect")]
-        void Connect(string userName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/NewRoom", ReplyAction="http://tempuri.org/IGameServices/NewRoomResponse")]
+        bool NewRoom(string hostUserName, string roomId);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/Connect")]
-        System.Threading.Tasks.Task ConnectAsync(string userName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/NewRoom", ReplyAction="http://tempuri.org/IGameServices/NewRoomResponse")]
+        System.Threading.Tasks.Task<bool> NewRoomAsync(string hostUserName, string roomId);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/Disconnect")]
-        void Disconnect(string userName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/GenerateRoomCode", ReplyAction="http://tempuri.org/IGameServices/GenerateRoomCodeResponse")]
+        string GenerateRoomCode();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/Disconnect")]
-        System.Threading.Tasks.Task DisconnectAsync(string userName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/GenerateRoomCode", ReplyAction="http://tempuri.org/IGameServices/GenerateRoomCodeResponse")]
+        System.Threading.Tasks.Task<string> GenerateRoomCodeAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/Connect", ReplyAction="http://tempuri.org/IGameServices/ConnectResponse")]
+        void Connect(string userName, string roomId, string message);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/Connect", ReplyAction="http://tempuri.org/IGameServices/ConnectResponse")]
+        System.Threading.Tasks.Task ConnectAsync(string userName, string roomId, string message);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/Disconnect", ReplyAction="http://tempuri.org/IGameServices/DisconnectResponse")]
+        void Disconnect(string userName, string roomId, string message);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameServices/Disconnect", ReplyAction="http://tempuri.org/IGameServices/DisconnectResponse")]
+        System.Threading.Tasks.Task DisconnectAsync(string userName, string roomId, string message);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/SendMessage")]
+        void SendMessage(string message, string userName, string roomId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/SendMessage")]
+        System.Threading.Tasks.Task SendMessageAsync(string message, string userName, string roomId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IGameServicesCallback {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/UpdateUsersList")]
-        void UpdateUsersList(string[] users);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameServices/MessageCallBack")]
+        void MessageCallBack(string message);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -282,20 +313,105 @@ namespace StopGame.StopGameService {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void Connect(string userName) {
-            base.Channel.Connect(userName);
+        public bool NewRoom(string hostUserName, string roomId) {
+            return base.Channel.NewRoom(hostUserName, roomId);
         }
         
-        public System.Threading.Tasks.Task ConnectAsync(string userName) {
-            return base.Channel.ConnectAsync(userName);
+        public System.Threading.Tasks.Task<bool> NewRoomAsync(string hostUserName, string roomId) {
+            return base.Channel.NewRoomAsync(hostUserName, roomId);
         }
         
-        public void Disconnect(string userName) {
-            base.Channel.Disconnect(userName);
+        public string GenerateRoomCode() {
+            return base.Channel.GenerateRoomCode();
         }
         
-        public System.Threading.Tasks.Task DisconnectAsync(string userName) {
-            return base.Channel.DisconnectAsync(userName);
+        public System.Threading.Tasks.Task<string> GenerateRoomCodeAsync() {
+            return base.Channel.GenerateRoomCodeAsync();
+        }
+        
+        public void Connect(string userName, string roomId, string message) {
+            base.Channel.Connect(userName, roomId, message);
+        }
+        
+        public System.Threading.Tasks.Task ConnectAsync(string userName, string roomId, string message) {
+            return base.Channel.ConnectAsync(userName, roomId, message);
+        }
+        
+        public void Disconnect(string userName, string roomId, string message) {
+            base.Channel.Disconnect(userName, roomId, message);
+        }
+        
+        public System.Threading.Tasks.Task DisconnectAsync(string userName, string roomId, string message) {
+            return base.Channel.DisconnectAsync(userName, roomId, message);
+        }
+        
+        public void SendMessage(string message, string userName, string roomId) {
+            base.Channel.SendMessage(message, userName, roomId);
+        }
+        
+        public System.Threading.Tasks.Task SendMessageAsync(string message, string userName, string roomId) {
+            return base.Channel.SendMessageAsync(message, userName, roomId);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="StopGameService.IUpdateProfile")]
+    public interface IUpdateProfile {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUpdateProfile/SaveImage", ReplyAction="http://tempuri.org/IUpdateProfile/SaveImageResponse")]
+        bool SaveImage(string imageManager, int idProfile);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUpdateProfile/SaveImage", ReplyAction="http://tempuri.org/IUpdateProfile/SaveImageResponse")]
+        System.Threading.Tasks.Task<bool> SaveImageAsync(string imageManager, int idProfile);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUpdateProfile/UpdateNewUserName", ReplyAction="http://tempuri.org/IUpdateProfile/UpdateNewUserNameResponse")]
+        bool UpdateNewUserName(string userName, string newUserName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUpdateProfile/UpdateNewUserName", ReplyAction="http://tempuri.org/IUpdateProfile/UpdateNewUserNameResponse")]
+        System.Threading.Tasks.Task<bool> UpdateNewUserNameAsync(string userName, string newUserName);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IUpdateProfileChannel : StopGame.StopGameService.IUpdateProfile, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class UpdateProfileClient : System.ServiceModel.ClientBase<StopGame.StopGameService.IUpdateProfile>, StopGame.StopGameService.IUpdateProfile {
+        
+        public UpdateProfileClient() {
+        }
+        
+        public UpdateProfileClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public UpdateProfileClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public UpdateProfileClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public UpdateProfileClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public bool SaveImage(string imageManager, int idProfile) {
+            return base.Channel.SaveImage(imageManager, idProfile);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SaveImageAsync(string imageManager, int idProfile) {
+            return base.Channel.SaveImageAsync(imageManager, idProfile);
+        }
+        
+        public bool UpdateNewUserName(string userName, string newUserName) {
+            return base.Channel.UpdateNewUserName(userName, newUserName);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateNewUserNameAsync(string userName, string newUserName) {
+            return base.Channel.UpdateNewUserNameAsync(userName, newUserName);
         }
     }
 }

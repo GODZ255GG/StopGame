@@ -1,33 +1,41 @@
-﻿using Domain;
-using StopGame.StopGameService;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Interop;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using System.Windows.Interop;
 
 namespace StopGame
 {
     /// <summary>
-    /// Lógica de interacción para MainMenu.xaml
+    /// Lógica de interacción para Profile.xaml
     /// </summary>
-    public partial class MainMenu : Window
+    public partial class Profile : Window
     {
-        public MainMenu()
+        public Profile()
         {
             InitializeComponent();
-            lbUserName.Content = Domain.User.UserClient.UserName;
-            ImageInit();
+            ShowData();
+            ImagenInit();
         }
 
-        private void ImageInit()
+        private void ShowData()
         {
-            var userImage = Domain.User.UserClient.ProfileImage;
-            if(userImage == "" || userImage == null)
-            {
-                Domain.User.UserClient.ProfileImage = "Bigotes";
-            }
+            tbUserName.Text = Domain.User.UserClient.UserName;
+            tbEmail.Text = Domain.User.UserClient.Email;
+        }
+
+        private void ImagenInit()
+        {
             Bitmap bmp = (Bitmap)Properties.ResourceImage.ResourceManager.GetObject(Domain.User.UserClient.ProfileImage);
 
             BitmapSource bmpImage = Imaging.CreateBitmapSourceFromHBitmap(
@@ -40,25 +48,25 @@ namespace StopGame
             imgProfilePicture.Source = bmpImage;
         }
 
-        private void ImgConfiguration_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void ImgReturn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Configuration configuration = new Configuration()
+            MainMenu menu = new MainMenu()
             {
                 WindowState = this.WindowState,
                 Left = this.Left
             };
-            configuration.Show();
+            menu.Show();
             this.Close();
         }
 
-        private void ImgProfilePicture_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void ImgProfileEdit(object sender, MouseButtonEventArgs e)
         {
-            Profile profile = new Profile()
+            EditUserProfile edit = new EditUserProfile()
             {
                 WindowState = this.WindowState,
                 Left = this.Left
             };
-            profile.Show();
+            edit.Show();
             this.Close();
         }
     }

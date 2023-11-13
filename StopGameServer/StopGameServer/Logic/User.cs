@@ -19,7 +19,9 @@ namespace Logic
         private string userName;
         private string email;
         private string password;
+        private string profileImage;
         private bool status;
+        private int tokens;
 
         #region Non-Serializable
         private OperationContext aOperationContext;
@@ -37,6 +39,10 @@ namespace Logic
         public string Email { get { return email; } set { email = value; } }
         [DataMember]
         public string Password { get { return password; } set { password = value; } }
+        [DataMember]
+        public string ProfileImage { get {  return profileImage; } set {  profileImage = value; } }
+        [DataMember]
+        public int Tokens { get { return tokens; } set { tokens = value; } }
         #endregion
     }
 }
