@@ -24,17 +24,15 @@ namespace StopGame
             InitializeComponent();
         }
 
-        private void imgReturn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void ImgReturn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            MainWindow main = new MainWindow();
+            MainWindow menu = new MainWindow()
+            {
+                WindowState = this.WindowState,
+                Left = this.Left
+            };
+            menu.Show();
             this.Close();
-            main.Show();
-        }
-
-        private void imgConfiguration_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Configuration configuration = new Configuration();
-            configuration.Show();
         }
     }
 }

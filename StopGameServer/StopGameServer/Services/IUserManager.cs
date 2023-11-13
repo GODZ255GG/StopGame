@@ -16,5 +16,11 @@ namespace Services
 
         [OperationContract]
         bool Register(User user);
+
+        [OperationContract]
+        bool ExistsEmailOrUserName(String userName, string email);
+
+        [OperationContract]
+        bool SendValidationEmail(String toEmail, String affair, int validationCode);
     }
 }

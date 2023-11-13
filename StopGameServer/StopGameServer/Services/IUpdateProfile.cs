@@ -11,6 +11,8 @@ namespace Services
     public interface IUpdateProfile
     {
         [OperationContract]
-        List<String> GetGlobalUser();
+        bool SaveImage(string imageManager, int idProfile);
+        [OperationContract]
+        bool UpdateNewUserName(string userName, string newUserName);
     }
 }

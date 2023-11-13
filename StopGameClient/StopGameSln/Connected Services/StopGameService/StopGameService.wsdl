@@ -8,7 +8,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_IUpdateProfile_policy">
+  <wsp:Policy wsu:Id="NetTcpBinding_IGameServices_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
@@ -16,7 +16,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_IGameServices_policy">
+  <wsp:Policy wsu:Id="NetTcpBinding_IUpdateProfile_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
@@ -29,7 +29,6 @@
       <xsd:import schemaLocation="http://172.20.10.5:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://172.20.10.5:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://172.20.10.5:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Logic" />
-      <xsd:import schemaLocation="http://172.20.10.5:8082/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserManager_Login_InputMessage">
@@ -44,20 +43,59 @@
   <wsdl:message name="IUserManager_Register_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegisterResponse" />
   </wsdl:message>
-  <wsdl:message name="IUpdateProfile_GetGlobalUser_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetGlobalUser" />
+  <wsdl:message name="IUserManager_ExistsEmailOrUserName_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExistsEmailOrUserName" />
   </wsdl:message>
-  <wsdl:message name="IUpdateProfile_GetGlobalUser_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetGlobalUserResponse" />
+  <wsdl:message name="IUserManager_ExistsEmailOrUserName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExistsEmailOrUserNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_SendValidationEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendValidationEmail" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_SendValidationEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendValidationEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_NewRoom_InputMessage">
+    <wsdl:part name="parameters" element="tns:NewRoom" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_NewRoom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NewRoomResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_GenerateRoomCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateRoomCode" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_GenerateRoomCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateRoomCodeResponse" />
   </wsdl:message>
   <wsdl:message name="IGameServices_Connect_InputMessage">
     <wsdl:part name="parameters" element="tns:Connect" />
   </wsdl:message>
+  <wsdl:message name="IGameServices_Connect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConnectResponse" />
+  </wsdl:message>
   <wsdl:message name="IGameServices_Disconnect_InputMessage">
     <wsdl:part name="parameters" element="tns:Disconnect" />
   </wsdl:message>
-  <wsdl:message name="IGameServices_UpdateUsersList_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:UpdateUsersList" />
+  <wsdl:message name="IGameServices_Disconnect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisconnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_SendMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessage" />
+  </wsdl:message>
+  <wsdl:message name="IGameServices_MessageCallBack_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:MessageCallBack" />
+  </wsdl:message>
+  <wsdl:message name="IUpdateProfile_SaveImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveImage" />
+  </wsdl:message>
+  <wsdl:message name="IUpdateProfile_SaveImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUpdateProfile_UpdateNewUserName_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateNewUserName" />
+  </wsdl:message>
+  <wsdl:message name="IUpdateProfile_UpdateNewUserName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateNewUserNameResponse" />
   </wsdl:message>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="Login">
@@ -68,22 +106,47 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/Register" message="tns:IUserManager_Register_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/RegisterResponse" message="tns:IUserManager_Register_OutputMessage" />
     </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:portType name="IUpdateProfile">
-    <wsdl:operation name="GetGlobalUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUpdateProfile/GetGlobalUser" message="tns:IUpdateProfile_GetGlobalUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUpdateProfile/GetGlobalUserResponse" message="tns:IUpdateProfile_GetGlobalUser_OutputMessage" />
+    <wsdl:operation name="ExistsEmailOrUserName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/ExistsEmailOrUserName" message="tns:IUserManager_ExistsEmailOrUserName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/ExistsEmailOrUserNameResponse" message="tns:IUserManager_ExistsEmailOrUserName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendValidationEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/SendValidationEmail" message="tns:IUserManager_SendValidationEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/SendValidationEmailResponse" message="tns:IUserManager_SendValidationEmail_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IGameServices">
+    <wsdl:operation name="NewRoom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/NewRoom" message="tns:IGameServices_NewRoom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameServices/NewRoomResponse" message="tns:IGameServices_NewRoom_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateRoomCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/GenerateRoomCode" message="tns:IGameServices_GenerateRoomCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameServices/GenerateRoomCodeResponse" message="tns:IGameServices_GenerateRoomCode_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="Connect">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/Connect" message="tns:IGameServices_Connect_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameServices/ConnectResponse" message="tns:IGameServices_Connect_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Disconnect">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/Disconnect" message="tns:IGameServices_Disconnect_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameServices/DisconnectResponse" message="tns:IGameServices_Disconnect_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="UpdateUsersList">
-      <wsdl:output wsaw:Action="http://tempuri.org/IGameServices/UpdateUsersList" message="tns:IGameServices_UpdateUsersList_OutputCallbackMessage" />
+    <wsdl:operation name="SendMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameServices/SendMessage" message="tns:IGameServices_SendMessage_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MessageCallBack">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameServices/MessageCallBack" message="tns:IGameServices_MessageCallBack_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IUpdateProfile">
+    <wsdl:operation name="SaveImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUpdateProfile/SaveImage" message="tns:IUpdateProfile_SaveImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUpdateProfile/SaveImageResponse" message="tns:IUpdateProfile_SaveImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNewUserName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUpdateProfile/UpdateNewUserName" message="tns:IUpdateProfile_UpdateNewUserName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUpdateProfile/UpdateNewUserNameResponse" message="tns:IUpdateProfile_UpdateNewUserName_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
@@ -107,12 +170,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="NetTcpBinding_IUpdateProfile" type="tns:IUpdateProfile">
-    <wsp:PolicyReference URI="#NetTcpBinding_IUpdateProfile_policy" />
-    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="GetGlobalUser">
-      <soap12:operation soapAction="http://tempuri.org/IUpdateProfile/GetGlobalUser" style="document" />
+    <wsdl:operation name="ExistsEmailOrUserName">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/ExistsEmailOrUserName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendValidationEmail">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/SendValidationEmail" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -124,20 +192,72 @@
   <wsdl:binding name="NetTcpBinding_IGameServices" type="tns:IGameServices">
     <wsp:PolicyReference URI="#NetTcpBinding_IGameServices_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="NewRoom">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/NewRoom" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateRoomCode">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/GenerateRoomCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Connect">
       <soap12:operation soapAction="http://tempuri.org/IGameServices/Connect" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="Disconnect">
       <soap12:operation soapAction="http://tempuri.org/IGameServices/Disconnect" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="UpdateUsersList">
-      <soap12:operation soapAction="http://tempuri.org/IGameServices/UpdateUsersList" style="document" />
+    <wsdl:operation name="SendMessage">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/SendMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="MessageCallBack">
+      <soap12:operation soapAction="http://tempuri.org/IGameServices/MessageCallBack" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IUpdateProfile" type="tns:IUpdateProfile">
+    <wsp:PolicyReference URI="#NetTcpBinding_IUpdateProfile_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="SaveImage">
+      <soap12:operation soapAction="http://tempuri.org/IUpdateProfile/SaveImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNewUserName">
+      <soap12:operation soapAction="http://tempuri.org/IUpdateProfile/UpdateNewUserName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -150,13 +270,13 @@
         <wsa10:Address>net.tcp://172.20.10.5:8081/Services</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
-    <wsdl:port name="NetTcpBinding_IUpdateProfile" binding="tns:NetTcpBinding_IUpdateProfile">
+    <wsdl:port name="NetTcpBinding_IGameServices" binding="tns:NetTcpBinding_IGameServices">
       <soap12:address location="net.tcp://172.20.10.5:8081/Services" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://172.20.10.5:8081/Services</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
-    <wsdl:port name="NetTcpBinding_IGameServices" binding="tns:NetTcpBinding_IGameServices">
+    <wsdl:port name="NetTcpBinding_IUpdateProfile" binding="tns:NetTcpBinding_IUpdateProfile">
       <soap12:address location="net.tcp://172.20.10.5:8081/Services" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://172.20.10.5:8081/Services</wsa10:Address>

@@ -61,6 +61,15 @@ namespace StopGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a CANCELAR.
+        /// </summary>
+        public static string btnCancel {
+            get {
+                return ResourceManager.GetString("btnCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a CREAR SALA.
         /// </summary>
         public static string btnCreateRoom {
@@ -133,11 +142,38 @@ namespace StopGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a GUARDAR.
+        /// </summary>
+        public static string btnSave {
+            get {
+                return ResourceManager.GetString("btnSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ESPAÑOL.
         /// </summary>
         public static string btnSpain {
             get {
                 return ResourceManager.GetString("btnSpain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ENVIAR CÓDIGO.
+        /// </summary>
+        public static string btnVerifyEmail {
+            get {
+                return ResourceManager.GetString("btnVerifyEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a SE HA ENVIADO UN CÓDIGO PARA VERIFICAR SU CORREO ELECTRÓNICO.
+        /// </summary>
+        public static string lbCodeSubmission {
+            get {
+                return ResourceManager.GetString("lbCodeSubmission", resourceCulture);
             }
         }
         
@@ -160,6 +196,15 @@ namespace StopGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a VERIFICACIÓN DE CORREO ELECTRONICO.
+        /// </summary>
+        public static string lbEmailVerification {
+            get {
+                return ResourceManager.GetString("lbEmailVerification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a AYUDA.
         /// </summary>
         public static string lbHelp {
@@ -174,6 +219,15 @@ namespace StopGame.Properties {
         public static string lbLanguage {
             get {
                 return ResourceManager.GetString("lbLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a NOMBRE:.
+        /// </summary>
+        public static string lbName {
+            get {
+                return ResourceManager.GetString("lbName", resourceCulture);
             }
         }
         
@@ -201,6 +255,24 @@ namespace StopGame.Properties {
         public static string lbUserName {
             get {
                 return ResourceManager.GetString("lbUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a PERFIL DE USUARIO.
+        /// </summary>
+        public static string lbUserPerfile {
+            get {
+                return ResourceManager.GetString("lbUserPerfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a NÚMERO DE VERIFICACIÓN: .
+        /// </summary>
+        public static string lbVerificationNumber {
+            get {
+                return ResourceManager.GetString("lbVerificationNumber", resourceCulture);
             }
         }
         

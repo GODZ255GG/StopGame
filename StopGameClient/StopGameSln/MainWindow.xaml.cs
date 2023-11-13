@@ -10,7 +10,7 @@ namespace StopGame
     /// </summary>
     public partial class MainWindow : Window
     {
-        String username = "";
+        String userName = "";
         String email = "";
         String password = "";
         public MainWindow()
@@ -21,7 +21,6 @@ namespace StopGame
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             RegisterAction();
-            MessageBox.Show("Usuario registrado correctamente", "Registro exitoso");
             tbUserName.Clear();
             tbEmail.Clear();
             pbPassword.Clear();        
@@ -29,18 +28,60 @@ namespace StopGame
 
         private void RegisterAction()
         {
-            username = tbUserName.Text;
+            userName = tbUserName.Text;
             email = tbEmail.Text;
             password = pbPassword.Password;
             StopGameService.UserManagerClient client = new StopGameService.UserManagerClient();
 
             User user = new User()
             {
-                UserName = username,
+                UserName = userName,
                 Email = email,
-                Password = password
+                Password = password,
+                ProfileImage = ""
             };
-            client.Register(user);
+            
+            Random randomNumber = new Random();
+            var validationCode = randomNumber.Next(100000, 1000000);
+
+            var result = false;
+
+            if (!client.ExistsEmailOrUserName(userName, email))
+            {
+                result = client.SendValidationEmail(email, "Validation Code", validationCode);
+            }
+
+            if(result)
+            {
+                VerifyEmail verifyEmail = new VerifyEmail()
+                {
+                    Left = this.Left
+                };
+                verifyEmail.ValidationCode = validationCode;
+                var resultCode = (bool)verifyEmail.ShowDialog();
+                var aux = client.Register(user);
+                if(aux && resultCode)
+                {
+                    MessageBox.Show("Usuario registrado correctamente", "Registro exitoso");
+                    client.Abort();
+                    Login login = new Login()
+                    {
+                        WindowState = this.WindowState,
+                        Left = this.Left
+                    };
+                    login.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo registrar al usuario", "Registro fallido");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se puede registrar al usuario", "Registro fallido");
+            }
+            
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
@@ -55,12 +96,6 @@ namespace StopGame
             PlayAsGuest guest = new PlayAsGuest();
             this.Close();
             guest.Show();
-        }
-
-        private void imgConfiguration_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Configuration configuration = new Configuration();
-            configuration.Show();
         }
     }
 }

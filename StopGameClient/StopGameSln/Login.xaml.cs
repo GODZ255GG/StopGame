@@ -27,7 +27,6 @@ namespace StopGame
         public Login()
         {
             InitializeComponent();
-            Domain.User.userClient = new Domain.User();
         }
 
         private void imgReturn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -49,7 +48,6 @@ namespace StopGame
                     {
                         LoginAction(userName, password);
                         MessageBox.Show("Bienvenido "+userName, "Inicio de sesión exitoso");
-                        Domain.User.userClient.UserName = userName;
                     }
                     catch (EndpointNotFoundException ex)
                     {
@@ -68,20 +66,24 @@ namespace StopGame
             var userLogin = client.Login(userName, password);
             if(userLogin != null)
             {
-                Domain.User.UserClient = new Domain.User()
+                if (userLogin.Status)
                 {
-                    IdUser = userLogin.IdUser,
-                    UserName= userLogin.UserName,
-                    Email= userLogin.Email
-                };
+                    Domain.User.UserClient = new Domain.User()
+                    {
+                        IdUser = userLogin.IdUser,
+                        UserName = userLogin.UserName,
+                        Email = userLogin.Email,
+                        ProfileImage = userLogin.ProfileImage
+                    };
 
-                MainMenu mainMenu = new MainMenu()
-                {
-                    WindowState = this.WindowState,
-                    Left = this.Left
-                };
-                mainMenu.Show();
-                this.Close();
+                    MainMenu mainMenu = new MainMenu()
+                    {
+                        WindowState = this.WindowState,
+                        Left = this.Left
+                    };
+                    mainMenu.Show();
+                    this.Close();
+                }
             }
             else
             {
@@ -107,12 +109,6 @@ namespace StopGame
                 isntTooLong = true;
             }
             return isntTooLong;
-        }
-
-        private void imgConfiguration_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Configuration configuration = new Configuration();
-            configuration.Show();
         }
     }
 }
