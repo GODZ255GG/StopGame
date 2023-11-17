@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StopGame", "StopGame.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "..\Domain\Domain.csproj", "{289EBD7C-111A-4CD7-B692-72D8A3265914}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Security", "..\Security\Security.csproj", "{C1717C50-46F2-4940-925B-159C74647237}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{289EBD7C-111A-4CD7-B692-72D8A3265914}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{289EBD7C-111A-4CD7-B692-72D8A3265914}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{289EBD7C-111A-4CD7-B692-72D8A3265914}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1717C50-46F2-4940-925B-159C74647237}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1717C50-46F2-4940-925B-159C74647237}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1717C50-46F2-4940-925B-159C74647237}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1717C50-46F2-4940-925B-159C74647237}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

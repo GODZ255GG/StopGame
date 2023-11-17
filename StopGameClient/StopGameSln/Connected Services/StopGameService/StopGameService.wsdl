@@ -55,6 +55,12 @@
   <wsdl:message name="IUserManager_SendValidationEmail_OutputMessage">
     <wsdl:part name="parameters" element="tns:SendValidationEmailResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManager_UpdatePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePassword" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_UpdatePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePasswordResponse" />
+  </wsdl:message>
   <wsdl:message name="IGameServices_NewRoom_InputMessage">
     <wsdl:part name="parameters" element="tns:NewRoom" />
   </wsdl:message>
@@ -113,6 +119,10 @@
     <wsdl:operation name="SendValidationEmail">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/SendValidationEmail" message="tns:IUserManager_SendValidationEmail_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/SendValidationEmailResponse" message="tns:IUserManager_SendValidationEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/UpdatePassword" message="tns:IUserManager_UpdatePassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/UpdatePasswordResponse" message="tns:IUserManager_UpdatePassword_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IGameServices">
@@ -181,6 +191,15 @@
     </wsdl:operation>
     <wsdl:operation name="SendValidationEmail">
       <soap12:operation soapAction="http://tempuri.org/IUserManager/SendValidationEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassword">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/UpdatePassword" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

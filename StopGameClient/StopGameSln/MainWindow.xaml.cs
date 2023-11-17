@@ -1,7 +1,6 @@
 ﻿using StopGame.StopGameService;
 using System;
 using System.Windows;
-using System.Windows.Input;
 
 namespace StopGame
 {
@@ -16,14 +15,6 @@ namespace StopGame
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void btnRegister_Click(object sender, RoutedEventArgs e)
-        {
-            RegisterAction();
-            tbUserName.Clear();
-            tbEmail.Clear();
-            pbPassword.Clear();        
         }
 
         private void RegisterAction()
@@ -53,10 +44,7 @@ namespace StopGame
 
             if(result)
             {
-                VerifyEmail verifyEmail = new VerifyEmail()
-                {
-                    Left = this.Left
-                };
+                VerifyEmail verifyEmail = new VerifyEmail();
                 verifyEmail.ValidationCode = validationCode;
                 var resultCode = (bool)verifyEmail.ShowDialog();
                 var aux = client.Register(user);
@@ -64,11 +52,7 @@ namespace StopGame
                 {
                     MessageBox.Show("Usuario registrado correctamente", "Registro exitoso");
                     client.Abort();
-                    Login login = new Login()
-                    {
-                        WindowState = this.WindowState,
-                        Left = this.Left
-                    };
+                    Login login = new Login();
                     login.Show();
                     this.Close();
                 }
@@ -84,18 +68,26 @@ namespace StopGame
             
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private void BtnRegister_Click(object sender, RoutedEventArgs e)
         {
-            Login signIn = new Login();
-            this.Close();
-            signIn.Show();
+            RegisterAction();
+            tbUserName.Clear();
+            tbEmail.Clear();
+            pbPassword.Clear();
         }
 
-        private void btnPlayAsGuest_Click(object sender, RoutedEventArgs e)
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            Login signIn = new Login();
+            signIn.Show();
+            this.Close();
+        }
+
+        private void BtnPlayAsGuest_Click(object sender, RoutedEventArgs e)
         {
             PlayAsGuest guest = new PlayAsGuest();
-            this.Close();
             guest.Show();
+            this.Close();
         }
     }
 }

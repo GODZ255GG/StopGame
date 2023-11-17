@@ -181,6 +181,12 @@ namespace StopGame.StopGameService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/SendValidationEmail", ReplyAction="http://tempuri.org/IUserManager/SendValidationEmailResponse")]
         System.Threading.Tasks.Task<bool> SendValidationEmailAsync(string toEmail, string affair, int validationCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdatePassword", ReplyAction="http://tempuri.org/IUserManager/UpdatePasswordResponse")]
+        bool UpdatePassword(string password, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdatePassword", ReplyAction="http://tempuri.org/IUserManager/UpdatePasswordResponse")]
+        System.Threading.Tasks.Task<bool> UpdatePasswordAsync(string password, string email);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -240,6 +246,14 @@ namespace StopGame.StopGameService {
         
         public System.Threading.Tasks.Task<bool> SendValidationEmailAsync(string toEmail, string affair, int validationCode) {
             return base.Channel.SendValidationEmailAsync(toEmail, affair, validationCode);
+        }
+        
+        public bool UpdatePassword(string password, string email) {
+            return base.Channel.UpdatePassword(password, email);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdatePasswordAsync(string password, string email) {
+            return base.Channel.UpdatePasswordAsync(password, email);
         }
     }
     

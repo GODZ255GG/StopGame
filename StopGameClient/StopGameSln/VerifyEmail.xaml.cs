@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace StopGame
 {
@@ -22,9 +12,16 @@ namespace StopGame
         private int validationCode;
 
         public int ValidationCode { get { return validationCode; } set { validationCode = value; } }
+
         public VerifyEmail()
         {
             InitializeComponent();
+        }
+
+        private void ImgReturn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DialogResult = false;
+            this.Close();
         }
 
         private void BtnVerifyEmail_Click(object sender, RoutedEventArgs e)
@@ -34,22 +31,16 @@ namespace StopGame
             {
                 if(Convert.ToInt32(code) == validationCode)
                 {
-                    MessageBox.Show("Bien", "Validacion exitosa");
+                    MessageBox.Show($"{Properties.Resources.confirmedEmailMessage}", $"{Properties.Resources.confirmedEmailTile}", MessageBoxButton.OK);
                     DialogResult = true;
                     this.Close();
                 }
                 else 
                 { 
                     DialogResult = false;
-                    MessageBox.Show("Mal", "Validacion fallida");
+                    MessageBox.Show($"{Properties.Resources.errorConfirmedMessage}", $"{Properties.Resources.errorConfirmedTile}", MessageBoxButton.OK);
                 }
             }
-        }
-
-        private void ImgReturn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            DialogResult = false;
-            this.Close();
         }
     }
 }
