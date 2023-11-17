@@ -9,7 +9,6 @@ namespace Logic
 {
     public class Authentication
     {
-        public List<User> UsersList { get; set; }
         public Authentication()
         {
         }
@@ -46,6 +45,22 @@ namespace Logic
                     return false;
                 }
                 userToUpdate.userName = userName;
+                status = context.SaveChanges() > 0;
+            }
+            return status;
+        }
+
+        public bool UpdateUserPassword(string password, string email)
+        {
+            var status = false;
+            using (var context = new StopEntities())
+            {
+                var userToUpdate = context.Users.FirstOrDefault(e => e.email.Equals(email));
+                if(userToUpdate == null) 
+                { 
+                    return false; 
+                }
+                userToUpdate.password = password;
                 status = context.SaveChanges() > 0;
             }
             return status;

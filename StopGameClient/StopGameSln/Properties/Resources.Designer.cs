@@ -169,6 +169,105 @@ namespace StopGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a No se pudo iniciar sesión, intente más tarde.
+        /// </summary>
+        public static string cantLoginMessage {
+            get {
+                return ResourceManager.GetString("cantLoginMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El correo electrónico se ha verificado correctamente.
+        /// </summary>
+        public static string confirmedEmailMessage {
+            get {
+                return ResourceManager.GetString("confirmedEmailMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Confirmación de correo electrónico.
+        /// </summary>
+        public static string confirmedEmailTile {
+            get {
+                return ResourceManager.GetString("confirmedEmailTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Existen campos vacíos, verifica los datos.
+        /// </summary>
+        public static string emptyFieldsMessage {
+            get {
+                return ResourceManager.GetString("emptyFieldsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Campos Vacíos.
+        /// </summary>
+        public static string emptyFieldsTile {
+            get {
+                return ResourceManager.GetString("emptyFieldsTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El código ingresado es incorrecto, verifique la información.
+        /// </summary>
+        public static string errorConfirmedMessage {
+            get {
+                return ResourceManager.GetString("errorConfirmedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error en la confirmación del correo electrónico.
+        /// </summary>
+        public static string errorConfirmedTile {
+            get {
+                return ResourceManager.GetString("errorConfirmedTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error.
+        /// </summary>
+        public static string errorTile {
+            get {
+                return ResourceManager.GetString("errorTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Existen campos que exceden la longitud permitida, verifique los datos.
+        /// </summary>
+        public static string excessLengthMessage {
+            get {
+                return ResourceManager.GetString("excessLengthMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Longitud excedida.
+        /// </summary>
+        public static string excessLengthTile {
+            get {
+                return ResourceManager.GetString("excessLengthTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El formato del nombre y/o contraseña no es correcto.
+        /// </summary>
+        public static string invalidFormatMessage {
+            get {
+                return ResourceManager.GetString("invalidFormatMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a SE HA ENVIADO UN CÓDIGO PARA VERIFICAR SU CORREO ELECTRÓNICO.
         /// </summary>
         public static string lbCodeSubmission {
@@ -273,6 +372,33 @@ namespace StopGame.Properties {
         public static string lbVerificationNumber {
             get {
                 return ResourceManager.GetString("lbVerificationNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No se pudo conectar con el servidor, por favor intente de nuevo..
+        /// </summary>
+        public static string noConnectionMessage {
+            get {
+                return ResourceManager.GetString("noConnectionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Debes ingresar tu usuario y contraseña.
+        /// </summary>
+        public static string noUserOrPassword {
+            get {
+                return ResourceManager.GetString("noUserOrPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Advertencia.
+        /// </summary>
+        public static string warningTile {
+            get {
+                return ResourceManager.GetString("warningTile", resourceCulture);
             }
         }
         

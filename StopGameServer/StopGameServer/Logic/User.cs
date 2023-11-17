@@ -16,12 +16,12 @@ namespace Logic
     public class User
     {
         private int idUser;
+        private int tokens;
+        private bool status;
         private string userName;
         private string email;
         private string password;
         private string profileImage;
-        private bool status;
-        private int tokens;
 
         #region Non-Serializable
         private OperationContext aOperationContext;
@@ -30,9 +30,11 @@ namespace Logic
 
         #region Properties
         [DataMember]
-        public bool Status { get { return status; } set { status = value; } }
-        [DataMember]
         public int IdUser { get { return idUser; } set { idUser = value; } }
+        [DataMember]
+        public int Tokens { get { return tokens; } set { tokens = value; } }
+        [DataMember]
+        public bool Status { get { return status; } set { status = value; } }
         [DataMember]
         public string UserName { get { return userName; } set { userName = value; } }
         [DataMember]
@@ -41,8 +43,6 @@ namespace Logic
         public string Password { get { return password; } set { password = value; } }
         [DataMember]
         public string ProfileImage { get {  return profileImage; } set {  profileImage = value; } }
-        [DataMember]
-        public int Tokens { get { return tokens; } set { tokens = value; } }
         #endregion
     }
 }

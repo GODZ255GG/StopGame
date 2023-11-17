@@ -1,6 +1,4 @@
-﻿using Domain;
-using StopGame.StopGameService;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows;
 using System.Windows.Input;
@@ -42,22 +40,14 @@ namespace StopGame
 
         private void ImgConfiguration_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Configuration configuration = new Configuration()
-            {
-                WindowState = this.WindowState,
-                Left = this.Left
-            };
+            Configuration configuration = new Configuration();
             configuration.Show();
             this.Close();
         }
 
         private void ImgProfilePicture_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Profile profile = new Profile()
-            {
-                WindowState = this.WindowState,
-                Left = this.Left
-            };
+            Profile profile = new Profile();
             profile.Show();
             this.Close();
         }

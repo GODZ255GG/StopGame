@@ -1,10 +1,6 @@
 ﻿using Logic;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Text;
 
 namespace Services
 {
@@ -22,5 +18,8 @@ namespace Services
 
         [OperationContract]
         bool SendValidationEmail(String toEmail, String affair, int validationCode);
+
+        [OperationContract]
+        bool UpdatePassword(string password, string email);
     }
 }

@@ -153,6 +153,39 @@
   <data name="btnVerifyEmail" xml:space="preserve">
     <value>SEND CODE</value>
   </data>
+  <data name="cantLoginMessage" xml:space="preserve">
+    <value>Could not login, try again later</value>
+  </data>
+  <data name="confirmedEmailMessage" xml:space="preserve">
+    <value>The email has been successfully verified</value>
+  </data>
+  <data name="confirmedEmailTile" xml:space="preserve">
+    <value>Email confirmation</value>
+  </data>
+  <data name="emptyFieldsMessage" xml:space="preserve">
+    <value>There are empty fields, check data</value>
+  </data>
+  <data name="emptyFieldsTile" xml:space="preserve">
+    <value>Empty Fields</value>
+  </data>
+  <data name="errorConfirmedMessage" xml:space="preserve">
+    <value>The code entered is incorrect, verify the information</value>
+  </data>
+  <data name="errorConfirmedTile" xml:space="preserve">
+    <value>Error in email confirmation</value>
+  </data>
+  <data name="errorTile" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="excessLengthMessage" xml:space="preserve">
+    <value>There are fields that exceed the allowed length, check the data.</value>
+  </data>
+  <data name="excessLengthTile" xml:space="preserve">
+    <value>Excess length</value>
+  </data>
+  <data name="invalidFormatMessage" xml:space="preserve">
+    <value>The format of the name and/or password is not correct</value>
+  </data>
   <data name="lbCodeSubmission" xml:space="preserve">
     <value>A CODE HAS BEEN SENT TO VERIFY YOUR E-MAIL ADDRESS</value>
   </data>
@@ -188,6 +221,15 @@
   </data>
   <data name="lbVerificationNumber" xml:space="preserve">
     <value>VERIFICATION NUMBER: </value>
+  </data>
+  <data name="noConnectionMessage" xml:space="preserve">
+    <value>Could not connect to the server, please try again.</value>
+  </data>
+  <data name="noUserOrPassword" xml:space="preserve">
+    <value>You must enter your username and password</value>
+  </data>
+  <data name="warningTile" xml:space="preserve">
+    <value>Warning</value>
   </data>
   <data name="windowTile" xml:space="preserve">
     <value>STOP LIS</value>

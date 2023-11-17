@@ -69,29 +69,29 @@ namespace StopGame
             }
             catch (EndpointNotFoundException ex)
             {
-
+                MessageBox.Show(Properties.Resources.noConnectionMessage, Properties.Resources.errorTile, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch(CommunicationObjectFaultedException ex)
+            {
+                MessageBox.Show(Properties.Resources.noConnectionMessage, Properties.Resources.errorTile, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (TimeoutException ex)
+            {
+                MessageBox.Show(Properties.Resources.noConnectionMessage, Properties.Resources.errorTile, MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {
                 updateProfileClient.Abort();
             }
 
-            Profile profile = new Profile()
-            {
-                WindowState = this.WindowState,
-                Left = this.Left
-            };
+            Profile profile = new Profile();
             profile.Show();
             this.Close();
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
-            Profile profile = new Profile()
-            {
-                WindowState = this.WindowState,
-                Left = this.Left
-            };
+            Profile profile = new Profile();
             profile.Show();
             this.Close();
         }
@@ -131,7 +131,7 @@ namespace StopGame
             if (String.IsNullOrWhiteSpace(tbUserName.Text))
             {
                 emptyFields = true;
-                MessageBox.Show("No se pudo ta vacio", "xd");
+                MessageBox.Show($"{Properties.Resources.emptyFieldsMessage}", $"{Properties.Resources.emptyFieldsTile}", MessageBoxButton.OK);
             }
             return emptyFields;
         }
@@ -142,7 +142,7 @@ namespace StopGame
             if(tbUserName.Text.Length > 45)
             {
                 excessLength = true;
-                MessageBox.Show("No se pudo ta largo", "xd");
+                MessageBox.Show($"{Properties.Resources.excessLengthMessage}", $"{Properties.Resources.excessLengthTile}", MessageBoxButton.OK);
             }
             return excessLength;
         }

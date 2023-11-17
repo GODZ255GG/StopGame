@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity.Core;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Text;
 using Logic;
 
 namespace Services
@@ -72,6 +70,21 @@ namespace Services
         {
             var client = new EmailSender();
             var status = client.SendValidationEmail(toEmail, affair, validationCode);
+            return status;
+        }
+
+        public bool UpdatePassword(string password, string email)
+        {
+            var status = false;
+            try
+            {
+                var client = new Authentication();
+                status = client.UpdateUserPassword(password, email);
+            }
+            catch (EntityException e)
+            {
+
+            }
             return status;
         }
 

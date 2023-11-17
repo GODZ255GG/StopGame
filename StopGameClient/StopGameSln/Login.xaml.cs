@@ -1,20 +1,9 @@
-﻿using Domain;
-using StopGame.StopGameService;
+﻿using StopGame.StopGameService;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace StopGame
 {
@@ -29,14 +18,14 @@ namespace StopGame
             InitializeComponent();
         }
 
-        private void imgReturn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void ImgReturn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             MainWindow main = new MainWindow();
             this.Close();
             main.Show();
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             var userName = tbUserName.Text;
             var password = pbPassword.Password;
@@ -47,17 +36,32 @@ namespace StopGame
                     try
                     {
                         LoginAction(userName, password);
-                        MessageBox.Show("Bienvenido "+userName, "Inicio de sesión exitoso");
                     }
                     catch (EndpointNotFoundException ex)
                     {
-
+                        MessageBox.Show(Properties.Resources.noConnectionMessage, Properties.Resources.errorTile, MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    catch (CommunicationObjectFaultedException ex)
+                    {
+                        MessageBox.Show(Properties.Resources.noConnectionMessage, Properties.Resources.errorTile, MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    catch (TimeoutException ex)
+                    {
+                        MessageBox.Show(Properties.Resources.noConnectionMessage, Properties.Resources.errorTile, MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    finally
+                    {
+                        client.Abort();
                     }
                 }
                 else
                 {
-
+                    MessageBox.Show(Properties.Resources.invalidFormatMessage, Properties.Resources.warningTile, MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
+            }
+            else
+            {
+                MessageBox.Show(Properties.Resources.noUserOrPassword, Properties.Resources.warningTile, MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -76,21 +80,18 @@ namespace StopGame
                         ProfileImage = userLogin.ProfileImage
                     };
 
-                    MainMenu mainMenu = new MainMenu()
-                    {
-                        WindowState = this.WindowState,
-                        Left = this.Left
-                    };
+                    MainMenu mainMenu = new MainMenu();
                     mainMenu.Show();
                     this.Close();
                 }
             }
             else
             {
-                
+                MessageBox.Show(Properties.Resources.cantLoginMessage, Properties.Resources.errorTile, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
+        #region Validation
         private bool AreValidStrings(string userName, string password)
         {
             var isValid = false;
@@ -104,11 +105,12 @@ namespace StopGame
         private bool AreTooLongStrings(string userName, string password)
         {
             var isntTooLong = false;
-            if (userName.Length <= 45 || password.Length <= 16)
+            if (userName.Length <= 65 || password.Length <= 20)
             {
                 isntTooLong = true;
             }
             return isntTooLong;
         }
+        #endregion
     }
 }

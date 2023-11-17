@@ -153,6 +153,39 @@
   <data name="btnVerifyEmail" xml:space="preserve">
     <value>ENVIAR CÓDIGO</value>
   </data>
+  <data name="cantLoginMessage" xml:space="preserve">
+    <value>No se pudo iniciar sesión, intente más tarde</value>
+  </data>
+  <data name="confirmedEmailMessage" xml:space="preserve">
+    <value>El correo electrónico se ha verificado correctamente</value>
+  </data>
+  <data name="confirmedEmailTile" xml:space="preserve">
+    <value>Confirmación de correo electrónico</value>
+  </data>
+  <data name="emptyFieldsMessage" xml:space="preserve">
+    <value>Existen campos vacíos, verifica los datos</value>
+  </data>
+  <data name="emptyFieldsTile" xml:space="preserve">
+    <value>Campos Vacíos</value>
+  </data>
+  <data name="errorConfirmedMessage" xml:space="preserve">
+    <value>El código ingresado es incorrecto, verifique la información</value>
+  </data>
+  <data name="errorConfirmedTile" xml:space="preserve">
+    <value>Error en la confirmación del correo electrónico</value>
+  </data>
+  <data name="errorTile" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="excessLengthMessage" xml:space="preserve">
+    <value>Existen campos que exceden la longitud permitida, verifique los datos</value>
+  </data>
+  <data name="excessLengthTile" xml:space="preserve">
+    <value>Longitud excedida</value>
+  </data>
+  <data name="invalidFormatMessage" xml:space="preserve">
+    <value>El formato del nombre y/o contraseña no es correcto</value>
+  </data>
   <data name="lbCodeSubmission" xml:space="preserve">
     <value>SE HA ENVIADO UN CÓDIGO PARA VERIFICAR SU CORREO ELECTRÓNICO</value>
   </data>
@@ -188,6 +221,15 @@
   </data>
   <data name="lbVerificationNumber" xml:space="preserve">
     <value>NÚMERO DE VERIFICACIÓN: </value>
+  </data>
+  <data name="noConnectionMessage" xml:space="preserve">
+    <value>No se pudo conectar con el servidor, por favor intente de nuevo.</value>
+  </data>
+  <data name="noUserOrPassword" xml:space="preserve">
+    <value>Debes ingresar tu usuario y contraseña</value>
+  </data>
+  <data name="warningTile" xml:space="preserve">
+    <value>Advertencia</value>
   </data>
   <data name="windowTile" xml:space="preserve">
     <value>BASTA LIS</value>
