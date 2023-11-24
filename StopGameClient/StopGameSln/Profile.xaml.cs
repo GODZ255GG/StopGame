@@ -15,28 +15,28 @@ namespace StopGame
         public Profile()
         {
             InitializeComponent();
-            ShowData();
-            ImagenInit();
+            ShowInformationUser();
         }
 
-        private void ShowData()
+        private void ShowInformationUser()
         {
             tbUserName.Text = Domain.User.UserClient.UserName;
             tbEmail.Text = Domain.User.UserClient.Email;
+            ShowImage();
         }
 
-        private void ImagenInit()
+        private void ShowImage()
         {
-            Bitmap bmp = (Bitmap)Properties.ResourceImage.ResourceManager.GetObject(Domain.User.UserClient.ProfileImage);
+            Bitmap getImage = (Bitmap)Properties.ResourceImage.ResourceManager.GetObject(Domain.User.UserClient.ProfileImage);
 
-            BitmapSource bmpImage = Imaging.CreateBitmapSourceFromHBitmap(
-                    bmp.GetHbitmap(),
+            BitmapSource loadImage = Imaging.CreateBitmapSourceFromHBitmap(
+                    getImage.GetHbitmap(),
                     IntPtr.Zero,
                     Int32Rect.Empty,
                     BitmapSizeOptions.FromEmptyOptions()
                     );
 
-            imgProfilePicture.Source = bmpImage;
+            imgProfilePicture.Source = loadImage;
         }
 
         private void ImgReturn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -50,13 +50,6 @@ namespace StopGame
         {
             EditUserProfile edit = new EditUserProfile();
             edit.Show();
-            this.Close();
-        }
-
-        private void BtnChangePassword(object sender, RoutedEventArgs e)
-        {
-            ChangePassword change = new ChangePassword();
-            change.Show();
             this.Close();
         }
     }

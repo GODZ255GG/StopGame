@@ -15,27 +15,38 @@ namespace StopGame
         public MainMenu()
         {
             InitializeComponent();
-            lbUserName.Content = Domain.User.UserClient.UserName;
-            ImageInit();
+            ShowInformationUser();
         }
 
-        private void ImageInit()
+        //En este meetodo l utilizo para poder mostrar la información del usuario que en este caso seria su nombre y su imagen de perfil
+        //no  se vi violaria el estandar ya que tengo que un metodo solo debe de hacer una cosa y al llamar a otro metodo dentro de este no se si 
+        //inflijiria el estandar.
+        private void ShowInformationUser()
         {
-            var userImage = Domain.User.UserClient.ProfileImage;
-            if(userImage == "" || userImage == null)
+            lbUserName.Content = Domain.User.UserClient.UserName;
+            ShowImage();
+        }
+
+        private void ShowImage()
+        {
+            if(!Domain.User.UserClient.IsGuest)
             {
-                Domain.User.UserClient.ProfileImage = "Bigotes";
+                var userImage = Domain.User.UserClient.ProfileImage;
+                if (userImage == "" || userImage == null)
+                {
+                    Domain.User.UserClient.ProfileImage = "Bigotes";
+                }
+                Bitmap getImage = (Bitmap)Properties.ResourceImage.ResourceManager.GetObject(Domain.User.UserClient.ProfileImage);
+
+                BitmapSource loadImage = Imaging.CreateBitmapSourceFromHBitmap(
+                        getImage.GetHbitmap(),
+                        IntPtr.Zero,
+                        Int32Rect.Empty,
+                        BitmapSizeOptions.FromEmptyOptions()
+                        );
+
+                imgProfilePicture.Source = loadImage;
             }
-            Bitmap bmp = (Bitmap)Properties.ResourceImage.ResourceManager.GetObject(Domain.User.UserClient.ProfileImage);
-
-            BitmapSource bmpImage = Imaging.CreateBitmapSourceFromHBitmap(
-                    bmp.GetHbitmap(),
-                    IntPtr.Zero,
-                    Int32Rect.Empty,
-                    BitmapSizeOptions.FromEmptyOptions()
-                    );
-
-            imgProfilePicture.Source = bmpImage;
         }
 
         private void ImgConfiguration_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -47,9 +58,12 @@ namespace StopGame
 
         private void ImgProfilePicture_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Profile profile = new Profile();
-            profile.Show();
-            this.Close();
+            if (!Domain.User.UserClient.IsGuest)
+            {
+                Profile profile = new Profile();
+                profile.Show();
+                this.Close();
+            }
         }
     }
 }

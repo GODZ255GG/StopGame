@@ -34,14 +34,14 @@ namespace Services
             try
             {
                 Register register = new Register();
-                Logic.User user1 = new Logic.User()
+                Logic.User newUser = new Logic.User()
                 {
                     UserName = user.UserName,
                     Email = user.Email,
                     Password = user.Password,
                     ProfileImage = user.ProfileImage
                 };
-                status = register.RegisterUser(user1);
+                status = register.RegisterUser(newUser);
             }
             catch (EntityException e)
             {
@@ -121,8 +121,8 @@ namespace Services
         {
             User user = new User()
             {
-                UserName= userName,
-                AOperationContext = OperationContext.Current,
+                UserName = userName,
+                UserContext = OperationContext.Current,
                 Tokens = 11
             };
 
@@ -172,7 +172,7 @@ namespace Services
                     answer += $": {anotherUser.UserName} ";
                 }
                 answer += message;
-                user.AOperationContext.GetCallbackChannel<IGameServiceCallback>().MessageCallBack(answer);
+                user.UserContext.GetCallbackChannel<IGameServiceCallback>().MessageCallBack(answer);
             }
         }
 

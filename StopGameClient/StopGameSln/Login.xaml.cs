@@ -12,7 +12,8 @@ namespace StopGame
     /// </summary>
     public partial class Login : Window
     {
-        StopGameService.UserManagerClient client = new StopGameService.UserManagerClient();
+        readonly StopGameService.UserManagerClient client = new StopGameService.UserManagerClient();
+
         public Login()
         {
             InitializeComponent();
@@ -67,7 +68,8 @@ namespace StopGame
 
         private void LoginAction(string userName, string password)
         {
-            var userLogin = client.Login(userName, password);
+            var userLogin = client.Login(userName, Security.PasswordEncryptor.ComputeSHA512Hash(password));
+
             if(userLogin != null)
             {
                 if (userLogin.Status)
@@ -77,7 +79,8 @@ namespace StopGame
                         IdUser = userLogin.IdUser,
                         UserName = userLogin.UserName,
                         Email = userLogin.Email,
-                        ProfileImage = userLogin.ProfileImage
+                        ProfileImage = userLogin.ProfileImage,
+                        IsGuest = false
                     };
 
                     MainMenu mainMenu = new MainMenu();

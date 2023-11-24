@@ -8,21 +8,15 @@ namespace Domain
 {
     public class User
     {
-        private int idUser;
-        private string userName;
-        private string email;
-        private string password;
-        private string profileImage;
-
         #region Singletone
-        private static User userClient;
-        public static User UserClient { get { return userClient; } set { userClient = value; } }
+        public static User UserClient { get; set; }
         #endregion
 
-        public int IdUser { get { return idUser; } set { idUser = value; } }
-        public string UserName { get { return userName; } set { userName = value; } }
-        public string Email { get { return email; } set { email = value; } }
-        public string Password { get { return password; } set { password = value; } }
-        public string ProfileImage { get {  return profileImage; } set {  profileImage = value; } }
+        public int IdUser { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string ProfileImage { get; set; }
+        public bool IsGuest { get; set; }
     }
 }

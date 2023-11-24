@@ -14,20 +14,23 @@ namespace StopGame
     public partial class EditUserProfile : Window
     {
 
-        String imgResource = "";
-        StopGameService.UpdateProfileClient updateProfileClient = new StopGameService.UpdateProfileClient();
+        private String imgResource = "";
+        readonly StopGameService.UpdateProfileClient updateProfileClient = new StopGameService.UpdateProfileClient();
         
         public EditUserProfile()
         {
             InitializeComponent();
-            ShowData();
+            ShowInformationUser();
             ReadResource();
-            ImageInit();
         }
 
-        private void ShowData()
+        //En este meetodo l utilizo para poder mostrar la información del usuario que en este caso seria su nombre y su imagen de perfil
+        //no  se vi violaria el estandar ya que tengo que un metodo solo debe de hacer una cosa y al llamar a otro metodo dentro de este no se si 
+        //inflijiria el estandar.
+        private void ShowInformationUser()
         {
             tbUserName.Text = Domain.User.UserClient.UserName;
+            ShowImage();
         }
 
         private void ReadResource()
@@ -38,33 +41,30 @@ namespace StopGame
             lbxImageSelector.Items.Add("Mariposa");
         }
 
-        private void ImageInit()
+        private void ShowImage()
         {
-            Bitmap bmp = (Bitmap)Properties.ResourceImage.ResourceManager.GetObject(Domain.User.UserClient.ProfileImage);
+            Bitmap getImage = (Bitmap)Properties.ResourceImage.ResourceManager.GetObject(Domain.User.UserClient.ProfileImage);
 
-            BitmapSource bmpImage = Imaging.CreateBitmapSourceFromHBitmap(
-                bmp.GetHbitmap(),
+            BitmapSource loadImage = Imaging.CreateBitmapSourceFromHBitmap(
+                getImage.GetHbitmap(),
                 IntPtr.Zero,
                 Int32Rect.Empty,
                 BitmapSizeOptions.FromEmptyOptions()
                 );
 
-            imgProfile.Source = bmpImage;
+            imgProfile.Source = loadImage;
         }
 
-        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        private void BtnSaveChanges_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 Domain.User.UserClient.ProfileImage = imgResource;
                 updateProfileClient.SaveImage(imgResource, Domain.User.UserClient.IdUser);
-                if (!String.IsNullOrWhiteSpace(tbUserName.Text))
+                if (!String.IsNullOrWhiteSpace(tbUserName.Text) && !ExistsInvalidFields())
                 {
-                    if (!ExistsInvalidFields())
-                    {
-                        updateProfileClient.UpdateNewUserName(tbUserName.Text, Domain.User.UserClient.UserName);
-                        Domain.User.UserClient.UserName = tbUserName.Text;
-                    }
+                    updateProfileClient.UpdateNewUserName(tbUserName.Text, Domain.User.UserClient.UserName);
+                    Domain.User.UserClient.UserName = tbUserName.Text;
                 }
             }
             catch (EndpointNotFoundException ex)
@@ -89,7 +89,7 @@ namespace StopGame
             this.Close();
         }
 
-        private void BtnCancel_Click(object sender, RoutedEventArgs e)
+        private void BtnCancelChanges_Click(object sender, RoutedEventArgs e)
         {
             Profile profile = new Profile();
             profile.Show();
@@ -100,16 +100,16 @@ namespace StopGame
         {
             if(lbxImageSelector.SelectedItem != null)
             {
-                Bitmap bmp = (Bitmap)Properties.ResourceImage.ResourceManager.GetObject(lbxImageSelector.SelectedItem.ToString());
+                Bitmap getImage = (Bitmap)Properties.ResourceImage.ResourceManager.GetObject(lbxImageSelector.SelectedItem.ToString());
 
-                BitmapSource bmpImages = Imaging.CreateBitmapSourceFromHBitmap(
-                    bmp.GetHbitmap(),
+                BitmapSource loadImage = Imaging.CreateBitmapSourceFromHBitmap(
+                    getImage.GetHbitmap(),
                     IntPtr.Zero,
                     Int32Rect.Empty,
                     BitmapSizeOptions.FromEmptyOptions()
                     );
 
-                imgProfile.Source = bmpImages;
+                imgProfile.Source = loadImage;
                 imgResource = lbxImageSelector.SelectedItem.ToString();
             }
         }

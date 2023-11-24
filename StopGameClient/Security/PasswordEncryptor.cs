@@ -4,15 +4,15 @@ using System.Text;
 
 namespace Security
 {
-    public class PasswordEncryptor
+    public static class PasswordEncryptor
     {
-        public static string ComputeSHA512Hash(string input)
+        public static string ComputeSHA512Hash(string password)
         {
             var encryptedPassword = "";
             using (SHA512 sHA512Hash = SHA512.Create())
             {
-                byte[] hash = sHA512Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-                encryptedPassword = BitConverter.ToString(hash)
+                byte[] hashvalue = sHA512Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
+                encryptedPassword = BitConverter.ToString(hashvalue)
                     .Replace("-", string.Empty)
                     .ToLowerInvariant();
             }
