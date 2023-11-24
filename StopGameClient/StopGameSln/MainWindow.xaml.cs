@@ -1,5 +1,6 @@
 ﻿using StopGame.StopGameService;
 using System;
+using System.ServiceModel;
 using System.Windows;
 
 namespace StopGame
@@ -9,9 +10,9 @@ namespace StopGame
     /// </summary>
     public partial class MainWindow : Window
     {
-        String userName = "";
-        String email = "";
-        String password = "";
+        private String userName = "";
+        private String email = "";
+        private String password = "";
         public MainWindow()
         {
             InitializeComponent();
@@ -24,11 +25,13 @@ namespace StopGame
             password = pbPassword.Password;
             StopGameService.UserManagerClient client = new StopGameService.UserManagerClient();
 
-            User user = new User()
+
+            string passwordHash = Security.PasswordEncryptor.ComputeSHA512Hash(password);
+            User newUser = new User()
             {
                 UserName = userName,
                 Email = email,
-                Password = password,
+                Password = passwordHash,
                 ProfileImage = ""
             };
             
@@ -44,10 +47,12 @@ namespace StopGame
 
             if(result)
             {
-                VerifyEmail verifyEmail = new VerifyEmail();
-                verifyEmail.ValidationCode = validationCode;
+                VerifyEmail verifyEmail = new VerifyEmail
+                {
+                    ValidationCode = validationCode
+                };
                 var resultCode = (bool)verifyEmail.ShowDialog();
-                var aux = client.Register(user);
+                var aux = client.Register(newUser);
                 if(aux && resultCode)
                 {
                     MessageBox.Show("Usuario registrado correctamente", "Registro exitoso");
@@ -70,7 +75,22 @@ namespace StopGame
 
         private void BtnRegister_Click(object sender, RoutedEventArgs e)
         {
-            RegisterAction();
+            try
+            {
+                RegisterAction();
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.noConnectionMessage, Properties.Resources.errorTile, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                MessageBox.Show(Properties.Resources.noConnectionMessage, Properties.Resources.errorTile, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (TimeoutException ex)
+            {
+                MessageBox.Show(Properties.Resources.noConnectionMessage, Properties.Resources.errorTile, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             tbUserName.Clear();
             tbEmail.Clear();
             pbPassword.Clear();
@@ -85,8 +105,13 @@ namespace StopGame
 
         private void BtnPlayAsGuest_Click(object sender, RoutedEventArgs e)
         {
-            PlayAsGuest guest = new PlayAsGuest();
-            guest.Show();
+            Domain.User.UserClient = new Domain.User()
+            {
+                UserName = $"Guest{new Random().Next()}",
+                IsGuest = true
+            };
+            MainMenu menu = new MainMenu();
+            menu.Show();
             this.Close();
         }
     }

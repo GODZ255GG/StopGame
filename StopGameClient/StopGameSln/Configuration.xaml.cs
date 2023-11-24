@@ -13,7 +13,7 @@ namespace StopGame
             InitializeComponent();
         }
 
-        private void BtnSpanish_Click(object sender, RoutedEventArgs e)
+        private void BtnChangeToSpanishLanguage_Click(object sender, RoutedEventArgs e)
         {
             App.Current.SwitchLanguage("en");
             Configuration configuration = new Configuration();
@@ -22,7 +22,7 @@ namespace StopGame
             this.Close();
         }
 
-        private void BtnEnglish_Click(object sender, RoutedEventArgs e)
+        private void BtnChangeToEnglishLanguage_Click(object sender, RoutedEventArgs e)
         {
             App.Current.SwitchLanguage("en-US");
             Configuration configuration = new Configuration();

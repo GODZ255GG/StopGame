@@ -15,8 +15,7 @@ namespace Logic
 
         public bool RegisterUser(Logic.User user)
         {
-            var status = false;
-            status = NewRecord(user);
+            bool status = NewRecord(user);
             return status;
         }
 
